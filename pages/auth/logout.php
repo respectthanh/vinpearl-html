@@ -1,13 +1,21 @@
 <?php
 // Include session management
-include_once '../../includes/session.php';
+require_once '../../includes/session.php';
+
+// Log the logout event (for security monitoring)
+if (isLoggedIn()) {
+    $user = getCurrentUser();
+    $ip = $_SERVER['REMOTE_ADDR'];
+    error_log("User {$user['email']} logged out from IP $ip");
+}
+
+// Set a flash message confirming logout
+setFlashMessage('You have been successfully logged out.', 'success');
 
 // Destroy the session
-session_start();
-session_unset();
-session_destroy();
+destroyUserSession();
 
 // Redirect to homepage
-header("Location: /vinpearl-html/index.html");
+header("Location: ../../index.php");
 exit();
 ?>

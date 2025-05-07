@@ -2,7 +2,7 @@
 // Database connection parameters
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "thyh8484";
 $database = "vinpearl_db";
 
 // Create connection

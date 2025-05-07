@@ -1,0 +1,39 @@
+# Enable rewrite engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect index.html to index.php
+    RewriteRule ^index\.html$ index.php [L,R=301]
+    
+    # Check if PHP equivalent exists and redirect
+    RewriteCond %{REQUEST_FILENAME} (.*)\.html$
+    RewriteCond %{REQUEST_FILENAME\.php} -f
+    RewriteRule ^(.*)\.html$ $1.php [L,R=301]
+    
+    # Redirect /auth/index.html to /auth/auth.php
+    RewriteRule ^pages/auth/index\.html$ pages/auth/auth.php [L,R=301]
+    
+    # Redirect from /pages/profile/bookings.html to /pages/profile/bookings.php
+    RewriteRule ^pages/profile/bookings\.html$ /pages/profile/bookings.php [R=301,L]
+
+    # Redirect from /pages/profile/index.html to /pages/profile/index.php
+    RewriteRule ^pages/profile/index\.html$ /pages/profile/index.php [R=301,L]
+</IfModule>
+
+# PHP session protection
+<IfModule mod_headers.c>
+    Header always append X-Frame-Options SAMEORIGIN
+    Header always append X-XSS-Protection "1; mode=block"
+    Header always append X-Content-Type-Options nosniff
+</IfModule>
+
+# Prevent direct access to includes directory
+<IfModule mod_rewrite.c>
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default character set
+AddDefaultCharset UTF-8

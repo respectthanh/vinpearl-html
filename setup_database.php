@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 // Database connection parameters (without database name)
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "thyh8484";
 $database = "vinpearl_db";
 
 echo "<h1>Vinpearl Database Setup</h1>";

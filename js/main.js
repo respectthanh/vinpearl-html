@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize translations object
+  window.allTranslations = window.allTranslations || {
+    'en': {
+      'nav.home': 'Home',
+      'nav.about': 'About',
+      'nav.rooms': 'Rooms',
+      'nav.tours': 'Tours',
+      'nav.packages': 'Packages',
+      'nav.nearby': 'Nearby',
+      'nav.signin': 'Sign In',
+      'footer.newsletter': 'Subscribe to our newsletter for the latest updates and special offers.',
+      'footer.email': 'Your Email',
+      'footer.subscribe': 'Subscribe'
+    },
+    'vi': {
+      'nav.home': 'Trang chủ',
+      'nav.about': 'Giới thiệu',
+      'nav.rooms': 'Phòng',
+      'nav.tours': 'Tour',
+      'nav.packages': 'Gói dịch vụ',
+      'nav.nearby': 'Khu vực lân cận',
+      'nav.signin': 'Đăng nhập',
+      'footer.newsletter': 'Đăng ký nhận thông tin mới nhất và ưu đãi đặc biệt.',
+      'footer.email': 'Email của bạn',
+      'footer.subscribe': 'Đăng ký'
+    }
+  };
+
   // Mobile menu toggle
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const mainNav = document.querySelector('.main-nav');
@@ -41,39 +69,37 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         
         const lang = this.getAttribute('data-lang');
-        languageToggle.textContent = lang === 'en' ? 'EN' : 'VI';
         
-        // Remove active class from all options
+        // Update active class
         languageOptions.forEach(opt => opt.classList.remove('active'));
-        
-        // Add active class to selected option
         this.classList.add('active');
+        
+        // Update toggle text
+        languageToggle.textContent = lang.toUpperCase();
+        
+        // Save selection to localStorage
+        localStorage.setItem('language', lang);
+        
+        // Update page content with translations
+        loadTranslations(lang);
         
         // Close dropdown
         languageDropdown.classList.remove('active');
-        
-        // Store language preference
-        localStorage.setItem('language', lang);
-        
-        // Load translations for the selected language
-        loadTranslations(lang);
       });
     });
     
-    // Set initial language based on localStorage or default to English
+    // Load saved language
     const savedLanguage = localStorage.getItem('language') || 'en';
-    languageToggle.textContent = savedLanguage === 'en' ? 'EN' : 'VI';
-    
-    // Set the active class on the correct language option
     languageOptions.forEach(option => {
       if (option.getAttribute('data-lang') === savedLanguage) {
         option.classList.add('active');
+        languageToggle.textContent = savedLanguage.toUpperCase();
       } else {
         option.classList.remove('active');
       }
     });
     
-    // Load translations for the initial language
+    // Load translations
     loadTranslations(savedLanguage);
   }
 
@@ -248,20 +274,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form submission with validation
     authForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+      // Allow the form to submit normally to the backend
+      // The backend will handle validation and authentication
       
+      // We'll just do some basic front-end validation first
       const isLogin = this.getAttribute('data-mode') === 'login';
       const email = this.querySelector('input[name="email"]').value;
       const password = this.querySelector('input[name="password"]').value;
       
       // Validate required fields
       if (!validateRequired(email) || !validateRequired(password)) {
+        e.preventDefault();
         showFormMessage(authForm, 'All fields are required', 'error');
         return;
       }
       
       // Validate email format
       if (!validateEmail(email)) {
+        e.preventDefault();
         showFormMessage(authForm, 'Please enter a valid email address', 'error');
         return;
       }
@@ -272,28 +302,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const passwordConfirm = this.querySelector('input[name="password_confirm"]').value;
         
         if (!validateRequired(name)) {
+          e.preventDefault();
           showFormMessage(authForm, 'Please enter your name', 'error');
           return;
         }
         
         if (!validatePassword(password)) {
+          e.preventDefault();
           showFormMessage(authForm, 'Password must be at least 8 characters with at least one letter and one number', 'error');
           return;
         }
         
         if (password !== passwordConfirm) {
+          e.preventDefault();
           showFormMessage(authForm, 'Passwords do not match', 'error');
           return;
         }
       }
       
-      // Form is valid, submit it (in a real app, this would be an AJAX request)
-      showFormMessage(authForm, isLogin ? 'Login successful!' : 'Registration successful!', 'success');
-      
-      // Redirect to home page after a delay (in a real app)
-      setTimeout(() => {
-        window.location.href = '/index.html';
-      }, 2000);
+      // If we get here, let the form submit to the backend
     });
   }
   
@@ -306,92 +333,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Calculate total when dates or guests change
     const calculateTotal = () => {
-      const checkin = new Date(bookingForm.querySelector('input[name="checkin"]').value);
-      const checkout = new Date(bookingForm.querySelector('input[name="checkout"]').value);
-      const guests = parseInt(bookingForm.querySelector('select[name="guests"]').value) || 1;
-      const roomType = bookingForm.querySelector('input[name="room_type"]:checked').value;
+      const checkIn = new Date(bookingForm.querySelector('input[name="check_in"]').value);
+      const checkOut = new Date(bookingForm.querySelector('input[name="check_out"]').value);
+      const adults = parseInt(bookingForm.querySelector('select[name="adults"]').value) || 1;
+      const children = parseInt(bookingForm.querySelector('select[name="children"]').value) || 0;
       
-      // Base rates per room type
-      const rates = {
-        'standard': 120,
-        'deluxe': 180,
-        'suite': 250
-      };
+      // Calculate number of nights
+      const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
       
-      if (checkin && checkout && !isNaN(checkin) && !isNaN(checkout)) {
-        // Calculate number of nights
-        const nights = Math.max(1, Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24)));
+      // Example rates
+      const baseRate = 150; // Per night
+      const adultRate = 25; // Per adult
+      const childRate = 15; // Per child
+      
+      // Calculate total
+      let total = 0;
+      
+      if (!isNaN(nights) && nights > 0) {
+        total = baseRate * nights;
+        total += (adults > 1) ? (adults - 1) * adultRate * nights : 0;
+        total += children * childRate * nights;
         
-        // Base rate based on room type
-        const baseRate = rates[roomType] || rates.standard;
-        
-        // Additional cost for extra guests (beyond 2)
-        const extraGuestFee = Math.max(0, guests - 2) * 25;
-        
-        // Calculate nightly rate
-        const nightlyRate = baseRate + extraGuestFee;
-        
-        // Calculate subtotal
-        const subtotal = nightlyRate * nights;
-        
-        // Calculate tax (12%)
-        const tax = subtotal * 0.12;
-        
-        // Calculate total
-        const total = subtotal + tax;
-        
-        // Update summary
-        document.getElementById('summary-nights').textContent = nights;
-        document.getElementById('summary-rate').textContent = `$${nightlyRate}`;
-        document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-        document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
-        document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
-        
-        // Update hidden field
-        bookingForm.querySelector('input[name="total_amount"]').value = total.toFixed(2);
+        // Update the total display
+        const totalElement = bookingForm.querySelector('.booking-total');
+        if (totalElement) {
+          totalElement.textContent = `$${total}`;
+        }
       }
     };
     
-    // Add event listeners to form fields
-    const dateInputs = bookingForm.querySelectorAll('input[type="date"]');
-    const guestsSelect = bookingForm.querySelector('select[name="guests"]');
-    const roomOptions = bookingForm.querySelectorAll('input[name="room_type"]');
-    
-    dateInputs.forEach(input => {
+    // Add event listeners
+    const inputs = bookingForm.querySelectorAll('input[name="check_in"], input[name="check_out"], select[name="adults"], select[name="children"]');
+    inputs.forEach(input => {
       input.addEventListener('change', calculateTotal);
     });
     
-    if (guestsSelect) {
-      guestsSelect.addEventListener('change', calculateTotal);
-    }
-    
-    roomOptions.forEach(option => {
-      option.addEventListener('change', calculateTotal);
-    });
-    
-    // Initialize with default values
+    // Initial calculation
     calculateTotal();
     
     // Form submission
     bookingForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Gather form data
-      const formData = new FormData(this);
-      const bookingData = {};
+      // Validate fields
+      const name = bookingForm.querySelector('input[name="name"]').value.trim();
+      const email = bookingForm.querySelector('input[name="email"]').value.trim();
+      const phone = bookingForm.querySelector('input[name="phone"]').value.trim();
+      const checkIn = bookingForm.querySelector('input[name="check_in"]').value;
+      const checkOut = bookingForm.querySelector('input[name="check_out"]').value;
       
-      for (const [key, value] of formData.entries()) {
-        bookingData[key] = value;
-      }
-      
-      // Basic validation
-      const checkin = bookingData.checkin;
-      const checkout = bookingData.checkout;
-      const name = bookingData.name;
-      const email = bookingData.email;
-      const phone = bookingData.phone;
-      
-      if (!checkin || !checkout || !name || !email || !phone) {
+      if (!name || !email || !phone || !checkIn || !checkOut) {
         showFormMessage(bookingForm, 'Please fill in all required fields', 'error');
         return;
       }
@@ -419,78 +410,25 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Internationalization functionality
   function loadTranslations(lang) {
-    // In a production app, we'd fetch these from a JSON file
-    const translations = {
-      'en': {
-        'nav.home': 'Home',
-        'nav.about': 'About',
-        'nav.rooms': 'Rooms',
-        'nav.tours': 'Tours',
-        'nav.packages': 'Packages',
-        'nav.nearby': 'Nearby',
-        'nav.contact': 'Contact',
-        'nav.signin': 'Sign In',
-        'home.hero.title': 'Experience Luxury in Paradise',
-        'home.hero.subtitle': 'Welcome to the premier beachfront resort in Nha Trang with world-class amenities and unparalleled service.',
-        'home.hero.cta': 'Book Your Stay',
-        'home.hero.discover': 'Discover More',
-        'home.about.title': 'Luxury Resort Experience',
-        'home.about.description': 'Nestled on the pristine coastline of Nha Trang, our award-winning resort offers an unforgettable blend of traditional Vietnamese hospitality and modern luxury. With breathtaking views of the ocean, exquisite dining options, and a wide range of activities, Vinpearl Resort is the perfect destination for your dream vacation.',
-        'home.rooms.title': 'Luxurious Accommodations',
-        'home.rooms.description': 'Choose from our selection of beautifully designed rooms and suites, each offering comfort, elegance, and stunning views.',
-        'home.rooms.viewAll': 'View All Rooms',
-        'home.tours.title': 'Exciting Tours & Activities',
-        'home.tours.description': 'Discover the beauty of Nha Trang and surrounding areas with our carefully crafted tours and activities.',
-        'home.tours.viewAll': 'View All Tours',
-        'home.testimonials.title': 'What Our Guests Say',
-        'rooms.details': 'View Details',
-        'tours.details': 'View Details',
-        'footer.newsletter': 'Subscribe to our newsletter for the latest updates and special offers.',
-        'footer.subscribe': 'Subscribe',
-        'footer.email': 'Your Email'
-      },
-      'vi': {
-        'nav.home': 'Trang chủ',
-        'nav.about': 'Giới thiệu',
-        'nav.rooms': 'Phòng',
-        'nav.tours': 'Tours',
-        'nav.packages': 'Gói dịch vụ',
-        'nav.nearby': 'Điểm gần đây',
-        'nav.contact': 'Liên hệ',
-        'nav.signin': 'Đăng nhập',
-        'home.hero.title': 'Trải nghiệm Sang trọng tại Thiên đường',
-        'home.hero.subtitle': 'Chào mừng đến với khu nghỉ dưỡng bên bờ biển hàng đầu tại Nha Trang với tiện nghi đẳng cấp thế giới và dịch vụ vô song.',
-        'home.hero.cta': 'Đặt phòng ngay',
-        'home.hero.discover': 'Khám phá thêm',
-        'home.about.title': 'Trải nghiệm Khu nghỉ dưỡng Sang trọng',
-        'home.about.description': 'Tọa lạc trên bờ biển nguyên sơ của Nha Trang, khu nghỉ dưỡng đạt giải thưởng của chúng tôi mang đến sự kết hợp khó quên giữa lòng hiếu khách truyền thống của Việt Nam và sự sang trọng hiện đại. Với tầm nhìn tuyệt đẹp ra đại dương, các lựa chọn ẩm thực tuyệt vời và nhiều hoạt động đa dạng, Vinpearl Resort là điểm đến hoàn hảo cho kỳ nghỉ trong mơ của bạn.',
-        'home.rooms.title': 'Phòng Nghỉ Sang Trọng',
-        'home.rooms.description': 'Lựa chọn từ bộ sưu tập phòng và suite được thiết kế đẹp mắt của chúng tôi, mỗi phòng đều mang đến sự thoải mái, sang trọng và tầm nhìn tuyệt đẹp.',
-        'home.rooms.viewAll': 'Xem tất cả phòng',
-        'home.tours.title': 'Tours & Hoạt động Thú vị',
-        'home.tours.description': 'Khám phá vẻ đẹp của Nha Trang và các khu vực lân cận với các tour và hoạt động được thiết kế cẩn thận của chúng tôi.',
-        'home.tours.viewAll': 'Xem tất cả tours',
-        'home.testimonials.title': 'Khách hàng Nói gì về Chúng tôi',
-        'rooms.details': 'Xem Chi tiết',
-        'tours.details': 'Xem Chi tiết',
-        'footer.newsletter': 'Đăng ký nhận bản tin của chúng tôi để cập nhật thông tin mới nhất và ưu đãi đặc biệt.',
-        'footer.subscribe': 'Đăng ký',
-        'footer.email': 'Email của bạn'
-      }
-    };
+    if (!window.allTranslations || !window.allTranslations[lang]) {
+      console.warn('No translations available for', lang);
+      return;
+    }
     
-    // Find all elements with data-i18n attribute
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(el => {
+    const translations = window.allTranslations[lang];
+    
+    // Update all elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (translations[lang] && translations[lang][key]) {
-        // If the element has a placeholder attribute, update that
-        if (el.hasAttribute('placeholder')) {
-          el.setAttribute('placeholder', translations[lang][key]);
-        } else {
-          // Otherwise update the text content
-          el.textContent = translations[lang][key];
-        }
+      
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+      
+      // Handle attributes like placeholders
+      const attrKey = el.getAttribute('data-i18n-attr');
+      if (attrKey && translations[key]) {
+        el.setAttribute(attrKey, translations[key]);
       }
     });
   }
@@ -501,14 +439,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function checkUserLoginStatus() {
     // Create a simple AJAX request to check login status
     const xhr = new XMLHttpRequest();
-    // Update path to be relative to the current root
     xhr.open('GET', '/includes/check_login_status.php', true);
     
     xhr.onload = function() {
       if (this.status === 200) {
         try {
           const response = JSON.parse(this.responseText);
-          console.log("Login status response:", response); // Add debugging to see the response
           
           // Find the sign-in button in the header - look for both data attribute and class
           const signInButton = document.querySelector('a[data-i18n="nav.signin"], .header-buttons a.btn.btn-white');
@@ -531,8 +467,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span class="user-name">${userName}</span>
                 </button>
                 <div class="user-dropdown">
-                  <a href="/pages/profile/index.html">My Profile</a>
-                  <a href="/pages/profile/bookings.html">My Bookings</a>
+                  <a href="/pages/profile/index.php">My Profile</a>
+                  <a href="/pages/profile/bookings.php">My Bookings</a>
                   ${response.user.role === 'ADMIN' ? '<a href="/pages/admin/index.html">Admin Panel</a>' : ''}
                   <a href="/pages/auth/logout.php">Logout</a>
                 </div>

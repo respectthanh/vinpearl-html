@@ -3,14 +3,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Start a session if not already started
-session_start();
+// Include required files
+require_once '../../includes/db_connect.php';
+require_once '../../includes/session.php';
 
-// Include database connection and session management
-include_once '../../includes/db_connect.php';
-// include_once '../../includes/session.php';
-
-// Debug log function
+// Debug log function for troubleshooting
 function logDebug($message, $data = null) {
     $logFile = 'register_debug.log';
     $timestamp = date('Y-m-d H:i:s');
@@ -29,7 +26,7 @@ logDebug("Registration process started");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     logDebug("POST request received", $_POST);
     
-    // Get form data
+    // Get and sanitize form data
     $name = isset($_POST['name']) ? $conn->real_escape_string($_POST['name']) : '';
     $email = isset($_POST['email']) ? $conn->real_escape_string($_POST['email']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
@@ -37,34 +34,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     logDebug("Processing registration for email", $email);
     
-    // Validate form data
+    // Validate inputs
     $errors = [];
     
-    // Validate name
     if (empty($name)) {
         $errors[] = "Name is required";
     }
     
-    // Validate email
     if (empty($email)) {
         $errors[] = "Email is required";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format";
     }
     
-    // Validate password
     if (empty($password)) {
         $errors[] = "Password is required";
     } elseif (strlen($password) < 8) {
         $errors[] = "Password must be at least 8 characters long";
     }
     
-    // Validate password confirmation
     if ($password !== $password_confirm) {
         $errors[] = "Passwords do not match";
     }
     
-    logDebug("Validation results", empty($errors) ? "Passed" : $errors);
+    // If there are validation errors, redirect back with error message
+    if (!empty($errors)) {
+        logDebug("Validation errors", $errors);
+        setFlashMessage(implode(", ", $errors), 'error');
+        header("Location: auth.php?mode=register");
+        exit();
+    }
     
     // Check if email already exists
     $query = "SELECT id FROM users WHERE email = ?";
@@ -73,7 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($query);
     if (!$stmt) {
         logDebug("Prepare statement failed", $conn->error);
-        die("Prepare failed: " . $conn->error);
+        setFlashMessage("Registration failed: Database error", 'error');
+        header("Location: auth.php?mode=register");
+        exit();
     }
     
     $stmt->bind_param("s", $email);
@@ -83,13 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $errors[] = "Email already in use";
         logDebug("Email already exists");
-    }
-    
-    // If there are errors, redirect back to the registration form
-    if (!empty($errors)) {
-        logDebug("Registration failed due to validation errors", $errors);
-        $_SESSION['register_errors'] = $errors;
-        header("Location: /pages/auth/index.html?register_error=" . urlencode(implode(", ", $errors)));
+        setFlashMessage("Email already in use", 'error');
+        header("Location: auth.php?mode=register");
         exit();
     }
     
@@ -104,12 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($query);
     if (!$stmt) {
         logDebug("Prepare statement failed", $conn->error);
-        $_SESSION['register_error'] = "Registration failed: " . $conn->error;
-        header("Location: /pages/auth/index.html?register_error=Database+error");
+        setFlashMessage("Registration failed: Database error", 'error');
+        header("Location: auth.php?mode=register");
         exit();
     }
     
-    $role = 'USER';
     $stmt->bind_param("sss", $name, $email, $password_hash);
     $executeResult = $stmt->execute();
     
@@ -118,20 +113,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($executeResult) {
         // Registration successful
         logDebug("Registration successful, user ID", $conn->insert_id);
-        $_SESSION['register_success'] = true;
-        header("Location: /pages/auth/index.html?register_success=true");
+        setFlashMessage("Registration successful! You can now login.", 'success');
+        header("Location: auth.php");
         exit();
     } else {
         // Registration failed
         logDebug("Registration failed", $stmt->error);
-        $_SESSION['register_error'] = "Registration failed. Please try again.";
-        header("Location: /pages/auth/index.html?register_error=Registration+failed.+Please+try+again.");
+        setFlashMessage("Registration failed. Please try again.", 'error');
+        header("Location: auth.php?mode=register");
         exit();
     }
 } else {
     // Not a POST request, redirect to registration form
     logDebug("Not a POST request, redirecting to registration form");
-    header("Location: /pages/auth/index.html");
+    header("Location: auth.php?mode=register");
     exit();
 }
 

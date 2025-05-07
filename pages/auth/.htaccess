@@ -1,0 +1,5 @@
+# Redirect from index.html to auth.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^index\.html$ auth.php [L,R=301]
+</IfModule>

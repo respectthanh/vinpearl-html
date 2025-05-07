@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+                        <li><a href="pages/about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="pages/rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="pages/tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="pages/packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="pages/nearby/index.html" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="pages/auth/index.html" class="btn btn-white" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1920" alt="Vinpearl Nha Trang Resort">
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="heading-1 fade-in" data-i18n="home.hero.title">Experience Luxury in Paradise</h1>
+                    <p class="hero-subtitle fade-in" data-i18n="home.hero.subtitle">Welcome to the premier beachfront resort in Nha Trang with world-class amenities and unparalleled service.</p>
+                    <div class="hero-buttons fade-in">
+                        <a href="pages/rooms/index.html" class="btn btn-primary" data-i18n="home.hero.cta">Book Your Stay</a>
+                        <a href="#about" class="btn btn-white" data-i18n="home.hero.discover">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section scroll-reveal">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2 class="heading-2 slide-up" data-i18n="home.about.title">Luxury Resort Experience</h2>
+                        <p class="about-description slide-up" data-i18n="home.about.description">Nestled on the pristine coastline of Nha Trang, our award-winning resort offers an unforgettable blend of traditional Vietnamese hospitality and modern luxury. With breathtaking views of the ocean, exquisite dining options, and a wide range of activities, Vinpearl Resort is the perfect destination for your dream vacation.</p>
+                        <div class="slide-up">
+                            <a href="pages/about/index.html" class="btn btn-primary" data-i18n="nav.about">About Us</a>
+                        </div>
+                    </div>
+                    <div class="about-image slide-in-right">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800" alt="Vinpearl Resort">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rooms Section -->
+        <section class="rooms section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up" data-i18n="home.rooms.title">Luxurious Accommodations</h2>
+                    <p class="section-description slide-up" data-i18n="home.rooms.description">Choose from our selection of beautifully designed rooms and suites, each offering comfort, elegance, and stunning views.</p>
+                </div>
+                
+                <div class="cards-grid stagger-animation">
+                    <!-- Room Card 1 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=600" alt="Deluxe Ocean View">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Deluxe Ocean View</h3>
+                            <p class="card-text">Experience luxury with stunning views of the ocean from your private balcony.</p>
+                            <div class="card-footer">
+                                <span class="price">$250 / night</span>
+                                <a href="pages/rooms/deluxe-ocean.html" class="card-link" data-i18n="rooms.details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Room Card 2 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=600" alt="Family Suite">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Family Suite</h3>
+                            <p class="card-text">Spacious accommodation perfect for families with separate living area.</p>
+                            <div class="card-footer">
+                                <span class="price">$350 / night</span>
+                                <a href="pages/rooms/family-suite.html" class="card-link" data-i18n="rooms.details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Room Card 3 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=600" alt="Presidential Suite">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Presidential Suite</h3>
+                            <p class="card-text">Our most exclusive accommodation with private pool and premium amenities.</p>
+                            <div class="card-footer">
+                                <span class="price">$550 / night</span>
+                                <a href="pages/rooms/presidential-suite.html" class="card-link" data-i18n="rooms.details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-footer slide-up">
+                    <a href="pages/rooms/index.html" class="btn btn-primary" data-i18n="home.rooms.viewAll">View All Rooms</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tours Section -->
+        <section class="tours section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up" data-i18n="home.tours.title">Exciting Tours & Activities</h2>
+                    <p class="section-description slide-up" data-i18n="home.tours.description">Discover the beauty of Nha Trang and surrounding areas with our carefully crafted tours and activities.</p>
+                </div>
+                
+                <div class="cards-grid stagger-animation">
+                    <!-- Tour Card 1 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=600" alt="Island Hopping Adventure">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Island Hopping Adventure</h3>
+                            <p class="card-text">Explore the beautiful islands around Nha Trang Bay.</p>
+                            <div class="card-footer">
+                                <span class="price">$120 / person</span>
+                                <a href="pages/tours/island-hopping.html" class="card-link" data-i18n="tours.details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 2 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="assets/images/Nha_Trang_Historical.png" alt="Cultural Heritage Tour">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cultural Heritage Tour</h3>
+                            <p class="card-text">Discover the rich cultural heritage of Nha Trang and its surroundings.</p>
+                            <div class="card-footer">
+                                <span class="price">$85 / person</span>
+                                <a href="pages/tours/cultural-heritage.html" class="card-link" data-i18n="tours.details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 3 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600" alt="Scuba Diving Experience">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Scuba Diving Experience</h3>
+                            <p class="card-text">Explore the underwater world with our professional diving instructors.</p>
+                            <div class="card-footer">
+                                <span class="price">$150 / person</span>
+                                <a href="pages/tours/scuba-diving.html" class="card-link" data-i18n="tours.details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-footer slide-up">
+                    <a href="pages/tours/index.html" class="btn btn-primary" data-i18n="home.tours.viewAll">View All Tours</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up" data-i18n="home.testimonials.title">What Our Guests Say</h2>
+                </div>
+                
+                <div class="testimonials-grid stagger-animation">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial zoom-in">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">JD</div>
+                            <div class="testimonial-meta">
+                                <h4 class="testimonial-name">John Doe</h4>
+                                <p class="testimonial-location">New York, USA</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">
+                            "Our stay at Vinpearl Nha Trang was absolutely amazing. The staff was attentive, the facilities were world-class, and the beach was pristine. Will definitely come back!"
+                        </p>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial zoom-in">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">MT</div>
+                            <div class="testimonial-meta">
+                                <h4 class="testimonial-name">Mai Trang</h4>
+                                <p class="testimonial-location">Hanoi, Vietnam</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">
+                            "Kỳ nghỉ tuyệt vời tại Vinpearl! Phòng ốc sang trọng, nhân viên phục vụ chu đáo, ẩm thực đa dạng. Chắc chắn sẽ quay trở lại!"
+                        </p>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial zoom-in">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">SK</div>
+                            <div class="testimonial-meta">
+                                <h4 class="testimonial-name">Sarah Kim</h4>
+                                <p class="testimonial-location">Seoul, South Korea</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">
+                            "The resort exceeded all my expectations. The tours were well organized and the guides were knowledgeable. The ocean view from our room was breathtaking!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section scroll-reveal">
+            <div class="container">
+                <h2 class="heading-2 slide-up">Ready for an Unforgettable Experience?</h2>
+                <p class="cta-text slide-up">Book your stay at Vinpearl Nha Trang today and create lasting memories in our paradise resort.</p>
+                <div class="slide-up">
+                    <a href="pages/rooms/index.html" class="btn btn-white" data-i18n="home.hero.cta">Book Your Stay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="pages/about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="pages/rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="pages/tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="pages/packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Register - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="../nearby/index.html" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="index.html" class="btn btn-white active" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h1 class="heading-2" data-i18n="auth.welcomeBack">Welcome Back</h1>
+                    <p data-i18n="auth.signInPrompt">Sign in to your account or create a new one</p>
+                </div>
+
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login" data-i18n="auth.login">Sign In</div>
+                    <div class="auth-tab" data-tab="register" data-i18n="auth.register">Register</div>
+                </div>
+
+                <form class="auth-form" data-mode="login" action="login_process.php" method="POST" id="authForm">
+                    <!-- Common Fields -->
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-i18n="auth.email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label" data-i18n="auth.password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+
+                    <!-- Register-only Fields -->
+                    <div class="form-group register-only" style="display: none;">
+                        <label for="name" class="form-label" data-i18n="auth.name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                    </div>
+
+                    <div class="form-group register-only" style="display: none;">
+                        <label for="password_confirm" class="form-label" data-i18n="auth.confirmPassword">Confirm Password</label>
+                        <input type="password" id="password_confirm" name="password_confirm" class="form-control">
+                    </div>
+
+                    <!-- Login-specific -->
+                    <div class="form-group login-specific">
+                        <div class="flex justify-between items-center">
+                            <div class="form-check">
+                                <input type="checkbox" id="remember" name="remember" class="form-check-input">
+                                <label for="remember" class="form-check-label" data-i18n="auth.rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" class="text-sm" data-i18n="auth.forgotPassword">Forgot password?</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary w-100" data-i18n="auth.login">Sign In</button>
+                    </div>
+                </form>
+
+                <div class="auth-divider" data-i18n="auth.orContinueWith">Or continue with</div>
+
+                <div class="social-login">
+                    <button type="button" class="btn btn-white">
+                        <span class="social-icon">G</span>
+                        <span data-i18n="auth.continueWithGoogle">Continue with Google</span>
+                    </button>
+                    <button type="button" class="btn btn-white">
+                        <span class="social-icon">f</span>
+                        <span data-i18n="auth.continueWithFacebook">Continue with Facebook</span>
+                    </button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>
+                        <span class="login-specific" data-i18n="auth.noAccount">Don't have an account?</span>
+                        <span class="register-only" style="display: none;" data-i18n="auth.alreadyHaveAccount">Already have an account?</span>
+                        <a href="#" class="auth-toggle-link">
+                            <span class="login-specific" data-i18n="auth.register">Register</span>
+                            <span class="register-only" style="display: none;" data-i18n="auth.login">Sign In</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auth tab toggle functionality
+            const authTabs = document.querySelectorAll('.auth-tab');
+            const authForm = document.querySelector('.auth-form');
+            const authToggleLink = document.querySelector('.auth-toggle-link');
+            const registerFields = document.querySelectorAll('.register-only');
+            const loginFields = document.querySelectorAll('.login-specific');
+
+            function toggleAuthMode(isLogin) {
+                authTabs.forEach(tab => {
+                    tab.classList.toggle('active', 
+                        (isLogin && tab.getAttribute('data-tab') === 'login') ||
+                        (!isLogin && tab.getAttribute('data-tab') === 'register')
+                    );
+                });
+                
+                authForm.setAttribute('data-mode', isLogin ? 'login' : 'register');
+                // Update form action based on mode
+                authForm.setAttribute('action', isLogin ? 'login_process.php' : 'register_process.php');
+                
+                registerFields.forEach(field => {
+                    field.style.display = isLogin ? 'none' : 'block';
+                });
+                
+                loginFields.forEach(field => {
+                    field.style.display = isLogin ? 'block' : 'none';
+                });
+                
+                const submitBtn = authForm.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.textContent = isLogin ? 
+                        (document.querySelector('[data-i18n="auth.login"]').textContent || 'Sign In') :
+                        (document.querySelector('[data-i18n="auth.register"]').textContent || 'Register');
+                }
+            }
+
+            authTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const isLogin = this.getAttribute('data-tab') === 'login';
+                    toggleAuthMode(isLogin);
+                });
+            });
+            
+            authToggleLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const currentMode = authForm.getAttribute('data-mode');
+                const isLogin = currentMode !== 'login';
+                toggleAuthMode(isLogin);
+            });
+            
+            // Handle form submission
+            authForm.addEventListener('submit', function(e) {
+                // Form will be submitted normally to the PHP endpoint
+                // After successful login/registration, the page will redirect to the homepage or intended destination
+            });
+
+            // Check for URL parameters indicating login status or errors
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('login_success')) {
+                alert('You have successfully logged in!');
+                // Redirect to homepage after showing message
+                window.location.href = '../../index.html';
+            } else if (urlParams.has('login_error')) {
+                const errorMessage = urlParams.get('login_error');
+                alert('Login error: ' + errorMessage);
+            } else if (urlParams.has('register_success')) {
+                alert('Registration successful! Please log in with your new account.');
+                toggleAuthMode(true); // Switch to login form
+            } else if (urlParams.has('register_error')) {
+                const errorMessage = urlParams.get('register_error');
+                alert('Registration error: ' + errorMessage);
+                toggleAuthMode(false); // Keep on register form
+            }
+            
+            // Initialize translations specific to auth page
+            if (typeof loadTranslations === 'function') {
+                const authTranslations = {
+                    'en': {
+                        'auth.welcomeBack': 'Welcome Back',
+                        'auth.signInPrompt': 'Sign in to your account or create a new one',
+                        'auth.login': 'Sign In',
+                        'auth.register': 'Register',
+                        'auth.email': 'Email',
+                        'auth.password': 'Password',
+                        'auth.name': 'Full Name',
+                        'auth.confirmPassword': 'Confirm Password',
+                        'auth.rememberMe': 'Remember me',
+                        'auth.forgotPassword': 'Forgot password?',
+                        'auth.orContinueWith': 'Or continue with',
+                        'auth.continueWithGoogle': 'Continue with Google',
+                        'auth.continueWithFacebook': 'Continue with Facebook',
+                        'auth.noAccount': 'Don\'t have an account?',
+                        'auth.alreadyHaveAccount': 'Already have an account?'
+                    },
+                    'vi': {
+                        'auth.welcomeBack': 'Chào mừng trở lại',
+                        'auth.signInPrompt': 'Đăng nhập vào tài khoản của bạn hoặc tạo một tài khoản mới',
+                        'auth.login': 'Đăng nhập',
+                        'auth.register': 'Đăng ký',
+                        'auth.email': 'Email',
+                        'auth.password': 'Mật khẩu',
+                        'auth.name': 'Họ và tên',
+                        'auth.confirmPassword': 'Xác nhận mật khẩu',
+                        'auth.rememberMe': 'Ghi nhớ đăng nhập',
+                        'auth.forgotPassword': 'Quên mật khẩu?',
+                        'auth.orContinueWith': 'Hoặc tiếp tục với',
+                        'auth.continueWithGoogle': 'Tiếp tục với Google',
+                        'auth.continueWithFacebook': 'Tiếp tục với Facebook',
+                        'auth.noAccount': 'Chưa có tài khoản?',
+                        'auth.alreadyHaveAccount': 'Đã có tài khoản?'
+                    }
+                };
+
+                // Add auth translations to main translations object
+                const savedLanguage = localStorage.getItem('language') || 'en';
+                window.allTranslations = window.allTranslations || {};
+                
+                if (!window.allTranslations.en) {
+                    window.allTranslations.en = {};
+                }
+                if (!window.allTranslations.vi) {
+                    window.allTranslations.vi = {};
+                }
+                
+                // Merge auth translations with main translations
+                Object.assign(window.allTranslations.en, authTranslations.en);
+                Object.assign(window.allTranslations.vi, authTranslations.vi);
+                
+                // Load translations for current language
+                loadTranslations(savedLanguage);
+            }
+        });
+    </script>
+</body>
+</html>

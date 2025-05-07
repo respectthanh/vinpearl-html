@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Packages - Vinpearl Admin</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header for Admin Pages -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="packages.html" class="active">Packages</a></li>
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="content.html">Content</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <button id="logout-button" class="btn btn-outline">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="admin-container">
+            <!-- Admin Auth Guard -->
+            <div id="auth-guard" class="auth-guard">
+                <div class="auth-guard-content">
+                    <div class="spinner"></div>
+                    <p>Checking authentication...</p>
+                </div>
+            </div>
+
+            <!-- Admin Content (initially hidden) -->
+            <div id="admin-content" class="admin-content" style="display: none;">
+                <div class="admin-header-section">
+                    <h1 class="heading-1">Package Management</h1>
+                    <p class="section-description">Create and manage vacation packages for Vinpearl Nha Trang Resort.</p>
+                </div>
+                
+                <!-- Package Stats -->
+                <section class="admin-section">
+                    <div class="package-stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-package"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Total Packages</h3>
+                                <p class="stat-value">15</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-star"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Featured Packages</h3>
+                                <p class="stat-value">5</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-trending-up"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Most Booked</h3>
+                                <p class="stat-value">Family Fun</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-calendar"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Recent Bookings</h3>
+                                <p class="stat-value">28</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Package Management -->
+                <section class="admin-section">
+                    <div class="section-header-with-action">
+                        <h2 class="heading-2">All Packages</h2>
+                        <button id="add-package-btn" class="btn btn-primary">+ Add New Package</button>
+                    </div>
+                    
+                    <!-- Search and Filter -->
+                    <div class="filter-row">
+                        <div class="search-input">
+                            <input type="text" id="search-packages" placeholder="Search packages...">
+                        </div>
+                        <div class="filter-group">
+                            <select id="filter-status">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                            <select id="filter-type">
+                                <option value="">All Types</option>
+                                <option value="spa">Spa</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="family">Family</option>
+                                <option value="romantic">Romantic</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Packages Table -->
+                    <div class="table-responsive">
+                        <table class="admin-table" id="packages-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Package Name</th>
+                                    <th>Duration</th>
+                                    <th>Price</th>
+                                    <th>Type</th>
+                                    <th>Featured</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PKG-001</td>
+                                    <td><img src="../../images/attractions/nha-trang-panorama.jpg" alt="Romantic Getaway" width="60" height="40"></td>
+                                    <td>Romantic Getaway</td>
+                                    <td>3 Days</td>
+                                    <td>$599</td>
+                                    <td>Romantic</td>
+                                    <td><span class="featured-badge">Yes</span></td>
+                                    <td><span class="status-badge confirmed">Active</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PKG-002</td>
+                                    <td><img src="../../images/attractions/hon-mun-island.jpg" alt="Family Fun" width="60" height="40"></td>
+                                    <td>Family Fun Package</td>
+                                    <td>5 Days</td>
+                                    <td>$1,299</td>
+                                    <td>Family</td>
+                                    <td><span class="featured-badge">Yes</span></td>
+                                    <td><span class="status-badge confirmed">Active</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PKG-003</td>
+                                    <td><img src="../../images/attractions/ba-ho-waterfalls.jpg" alt="Adventure Escape" width="60" height="40"></td>
+                                    <td>Adventure Escape</td>
+                                    <td>4 Days</td>
+                                    <td>$899</td>
+                                    <td>Adventure</td>
+                                    <td><span class="featured-badge">Yes</span></td>
+                                    <td><span class="status-badge confirmed">Active</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PKG-004</td>
+                                    <td><img src="../../images/attractions/long-son-pagoda.jpg" alt="Cultural Discovery" width="60" height="40"></td>
+                                    <td>Cultural Discovery</td>
+                                    <td>3 Days</td>
+                                    <td>$649</td>
+                                    <td>Cultural</td>
+                                    <td><span class="featured-badge faded">No</span></td>
+                                    <td><span class="status-badge confirmed">Active</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PKG-005</td>
+                                    <td><img src="../../images/attractions/sailing-club.jpg" alt="Spa Retreat" width="60" height="40"></td>
+                                    <td>Spa & Wellness Retreat</td>
+                                    <td>2 Days</td>
+                                    <td>$499</td>
+                                    <td>Spa</td>
+                                    <td><span class="featured-badge">Yes</span></td>
+                                    <td><span class="status-badge pending">Inactive</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PKG-006</td>
+                                    <td><img src="../../images/attractions/doc-let-beach.jpg" alt="Beach Bliss" width="60" height="40"></td>
+                                    <td>Beach Bliss Getaway</td>
+                                    <td>3 Days</td>
+                                    <td>$799</td>
+                                    <td>Romantic</td>
+                                    <td><span class="featured-badge faded">No</span></td>
+                                    <td><span class="status-badge confirmed">Active</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>&laquo;</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">&raquo;</button>
+                    </div>
+                </section>
+                
+                <!-- Add/Edit Package Modal (hidden by default) -->
+                <div id="package-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <h2 id="modal-title">Add New Package</h2>
+                        
+                        <form id="package-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="package-name">Package Name</label>
+                                <input type="text" id="package-name" name="name" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="package-duration">Duration</label>
+                                    <input type="text" id="package-duration" name="duration" placeholder="e.g. 3 Days">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="package-price">Price ($)</label>
+                                    <input type="number" id="package-price" name="price" min="0" step="0.01">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="package-type">Type</label>
+                                    <select id="package-type" name="type">
+                                        <option value="spa">Spa</option>
+                                        <option value="adventure">Adventure</option>
+                                        <option value="family">Family</option>
+                                        <option value="romantic">Romantic</option>
+                                        <option value="cultural">Cultural</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="package-status">Status</label>
+                                    <select id="package-status" name="status">
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="package-featured" name="featured">
+                                <label for="package-featured" class="checkbox-label">Featured Package</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="package-image">Package Image</label>
+                                <input type="file" id="package-image" name="image" accept="image/*">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="package-description">Description</label>
+                                <textarea id="package-description" name="description" rows="4"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="package-inclusions">Inclusions</label>
+                                <textarea id="package-inclusions" name="inclusions" rows="3" placeholder="What's included in the package"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="package-itinerary">Itinerary</label>
+                                <textarea id="package-itinerary" name="itinerary" rows="5" placeholder="Day-by-day breakdown of activities"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="cancel-package">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Package</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Package Details Modal -->
+                <div id="package-details-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <h2>Package Details</h2>
+                        
+                        <div class="details-container">
+                            <div class="details-header">
+                                <div class="details-image">
+                                    <img id="detail-image" src="../../images/attractions/nha-trang-panorama.jpg" alt="Package">
+                                </div>
+                                <div class="details-info">
+                                    <h3 id="detail-name">Romantic Getaway</h3>
+                                    <div class="details-meta">
+                                        <span id="detail-duration">3 Days</span>
+                                        <span class="meta-separator">|</span>
+                                        <span id="detail-price">$599</span>
+                                        <span class="meta-separator">|</span>
+                                        <span id="detail-type">Romantic</span>
+                                    </div>
+                                    <div class="details-status">
+                                        <span class="status-badge confirmed" id="detail-status">Active</span>
+                                        <span class="featured-badge" id="detail-featured">Featured</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="details-section">
+                                <h4>Description</h4>
+                                <p id="detail-description">A romantic escape designed for couples looking to relax and reconnect in the beautiful surroundings of Nha Trang. This package includes a candlelit dinner on the beach, couple's massage, and a sunset cruise.</p>
+                            </div>
+                            
+                            <div class="details-section">
+                                <h4>Inclusions</h4>
+                                <ul id="detail-inclusions">
+                                    <li>3-night accommodations in a deluxe ocean view room</li>
+                                    <li>Daily breakfast for two</li>
+                                    <li>Private candlelit dinner on the beach</li>
+                                    <li>Couples' spa treatment (60 min)</li>
+                                    <li>Sunset cruise with champagne</li>
+                                    <li>Airport transfers</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="details-section">
+                                <h4>Itinerary</h4>
+                                <div id="detail-itinerary">
+                                    <p><strong>Day 1:</strong> Arrival and check-in. Welcome drink and fruit basket. Time at leisure. Dinner at the hotel.</p>
+                                    <p><strong>Day 2:</strong> Breakfast at the hotel. Morning at leisure. Afternoon couples' spa treatment. Evening candlelit dinner on the beach.</p>
+                                    <p><strong>Day 3:</strong> Breakfast at the hotel. Day at leisure. Evening sunset cruise with champagne.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="close-details">Close</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Delete Confirmation Modal -->
+                <div id="delete-modal" class="modal">
+                    <div class="modal-content modal-sm">
+                        <span class="modal-close">&times;</span>
+                        <h2>Delete Package</h2>
+                        <p>Are you sure you want to delete this package? This action cannot be undone.</p>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancel-delete">Cancel</button>
+                            <button type="button" class="btn btn-danger" id="confirm-delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Authentication check
+            setTimeout(function() {
+                // Check if user is logged in and is an admin
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const isAdmin = localStorage.getItem('userRole') === 'ADMIN';
+                
+                if (!isLoggedIn) {
+                    showError('You must be logged in to access this area');
+                    setTimeout(() => {
+                        window.location.href = '../auth/index.html';
+                    }, 2000);
+                } else if (!isAdmin) {
+                    showError('You do not have permission to access this area');
+                    setTimeout(() => {
+                        window.location.href = '../../index.html';
+                    }, 2000);
+                } else {
+                    document.getElementById('auth-guard').style.display = 'none';
+                    document.getElementById('admin-content').style.display = 'block';
+                }
+            }, 1000);
+            
+            // Function to show error message
+            function showError(message) {
+                const authGuard = document.getElementById('auth-guard');
+                authGuard.innerHTML = `
+                    <div class="auth-guard-content error">
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+            
+            // Logout button handler
+            document.getElementById('logout-button').addEventListener('click', function() {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userName');
+                window.location.href = '../auth/index.html';
+            });
+            
+            // Modal variables
+            const packageModal = document.getElementById('package-modal');
+            const packageDetailsModal = document.getElementById('package-details-modal');
+            const deleteModal = document.getElementById('delete-modal');
+            const addPackageBtn = document.getElementById('add-package-btn');
+            const cancelPackageBtn = document.getElementById('cancel-package');
+            const cancelDeleteBtn = document.getElementById('cancel-delete');
+            const closeDetailsBtn = document.getElementById('close-details');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            
+            // Show Add Package modal
+            addPackageBtn.addEventListener('click', function() {
+                document.getElementById('modal-title').textContent = 'Add New Package';
+                document.getElementById('package-form').reset();
+                packageModal.style.display = 'block';
+            });
+            
+            // Close modals with buttons
+            cancelPackageBtn.addEventListener('click', function() {
+                packageModal.style.display = 'none';
+            });
+            
+            cancelDeleteBtn.addEventListener('click', function() {
+                deleteModal.style.display = 'none';
+            });
+            
+            closeDetailsBtn.addEventListener('click', function() {
+                packageDetailsModal.style.display = 'none';
+            });
+            
+            // Close modals with X button
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    packageModal.style.display = 'none';
+                    packageDetailsModal.style.display = 'none';
+                    deleteModal.style.display = 'none';
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === packageModal) {
+                    packageModal.style.display = 'none';
+                }
+                if (event.target === packageDetailsModal) {
+                    packageDetailsModal.style.display = 'none';
+                }
+                if (event.target === deleteModal) {
+                    deleteModal.style.display = 'none';
+                }
+            });
+            
+            // View button functionality
+            const viewButtons = document.querySelectorAll('.view-btn');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const packageName = row.cells[2].textContent;
+                    const packageDuration = row.cells[3].textContent;
+                    const packagePrice = row.cells[4].textContent;
+                    const packageType = row.cells[5].textContent;
+                    const isFeatured = row.cells[6].querySelector('.featured-badge').textContent === 'Yes';
+                    const packageStatus = row.cells[7].querySelector('.status-badge').textContent;
+                    const packageImage = row.cells[1].querySelector('img').src;
+                    
+                    document.getElementById('detail-name').textContent = packageName;
+                    document.getElementById('detail-duration').textContent = packageDuration;
+                    document.getElementById('detail-price').textContent = packagePrice;
+                    document.getElementById('detail-type').textContent = packageType;
+                    document.getElementById('detail-image').src = packageImage;
+                    document.getElementById('detail-status').textContent = packageStatus;
+                    document.getElementById('detail-status').className = packageStatus.toLowerCase() === 'active' ? 'status-badge confirmed' : 'status-badge pending';
+                    document.getElementById('detail-featured').textContent = isFeatured ? 'Featured' : 'Not Featured';
+                    document.getElementById('detail-featured').className = isFeatured ? 'featured-badge' : 'featured-badge faded';
+                    
+                    // Note: In a real application, you would load the full description, inclusions,
+                    // and itinerary from a database using an AJAX call
+                    
+                    packageDetailsModal.style.display = 'block';
+                });
+            });
+            
+            // Edit button functionality
+            const editButtons = document.querySelectorAll('.edit-btn');
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const packageName = row.cells[2].textContent;
+                    const packageDuration = row.cells[3].textContent;
+                    const packagePrice = row.cells[4].textContent.replace('$', '');
+                    const packageType = row.cells[5].textContent;
+                    const isFeatured = row.cells[6].querySelector('.featured-badge').textContent === 'Yes';
+                    const packageStatus = row.cells[7].querySelector('.status-badge').textContent;
+                    
+                    document.getElementById('modal-title').textContent = 'Edit Package';
+                    document.getElementById('package-name').value = packageName;
+                    document.getElementById('package-duration').value = packageDuration;
+                    document.getElementById('package-price').value = packagePrice;
+                    document.getElementById('package-featured').checked = isFeatured;
+                    
+                    // Set type dropdown
+                    const typeSelect = document.getElementById('package-type');
+                    for (let i = 0; i < typeSelect.options.length; i++) {
+                        if (typeSelect.options[i].text.toLowerCase() === packageType.toLowerCase()) {
+                            typeSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    
+                    // Set status dropdown
+                    const statusSelect = document.getElementById('package-status');
+                    const statusValue = packageStatus.toLowerCase() === 'active' ? 'active' : 'inactive';
+                    for (let i = 0; i < statusSelect.options.length; i++) {
+                        if (statusSelect.options[i].value === statusValue) {
+                            statusSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    
+                    packageModal.style.display = 'block';
+                });
+            });
+            
+            // Delete button functionality
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    deleteModal.style.display = 'block';
+                });
+            });
+            
+            // Form submission (just for demonstration)
+            const packageForm = document.getElementById('package-form');
+            packageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real application, you'd send an AJAX request here
+                alert('Package saved successfully!');
+                packageModal.style.display = 'none';
+            });
+            
+            // Delete confirmation (just for demonstration)
+            const confirmDeleteBtn = document.getElementById('confirm-delete');
+            confirmDeleteBtn.addEventListener('click', function() {
+                // In a real application, you'd send an AJAX request here
+                alert('Package deleted successfully!');
+                deleteModal.style.display = 'none';
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('search-packages');
+            searchInput.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                const rows = document.querySelectorAll('#packages-table tbody tr');
+                
+                rows.forEach(row => {
+                    const packageName = row.cells[2].textContent.toLowerCase();
+                    if (packageName.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Filter functionality
+            const statusFilter = document.getElementById('filter-status');
+            const typeFilter = document.getElementById('filter-type');
+            
+            function filterTable() {
+                const statusValue = statusFilter.value.toLowerCase();
+                const typeValue = typeFilter.value.toLowerCase();
+                const rows = document.querySelectorAll('#packages-table tbody tr');
+                
+                rows.forEach(row => {
+                    const status = row.cells[7].textContent.toLowerCase();
+                    const type = row.cells[5].textContent.toLowerCase();
+                    
+                    const statusMatch = !statusValue || status.includes(statusValue);
+                    const typeMatch = !typeValue || type.includes(typeValue);
+                    
+                    if (statusMatch && typeMatch) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+            
+            statusFilter.addEventListener('change', filterTable);
+            typeFilter.addEventListener('change', filterTable);
+        });
+    </script>
+
+    <style>
+        /* Additional styles for packages page */
+        .package-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .search-input input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .filter-group select {
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 0.25rem;
+        }
+        
+        .pagination-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .pagination-btn.active {
+            background: #4a6fa5;
+            color: white;
+            border-color: #4a6fa5;
+        }
+        
+        .pagination-btn:hover:not(.active):not([disabled]) {
+            background: #f3f4f6;
+        }
+        
+        .pagination-btn[disabled] {
+            color: #d1d5db;
+            cursor: not-allowed;
+        }
+        
+        /* Featured badge */
+        .featured-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background-color: #fee2e2;
+            color: #dc2626;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .featured-badge.faded {
+            background-color: #f3f4f6;
+            color: #9ca3af;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 700px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .modal-sm {
+            max-width: 500px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Form styles */
+        .admin-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .admin-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .admin-form input[type="text"],
+        .admin-form input[type="number"],
+        .admin-form select,
+        .admin-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        
+        .checkbox-label {
+            margin-bottom: 0;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        /* Package details styles */
+        .details-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .details-header {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .details-image {
+            width: 300px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+        
+        .details-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .details-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .details-info h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .details-meta {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .meta-separator {
+            margin: 0 0.5rem;
+        }
+        
+        .details-status {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .details-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .details-section:last-child {
+            border-bottom: none;
+        }
+        
+        .details-section h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+        
+        /* Danger button */
+        .btn-danger {
+            background-color: #dc2626;
+            color: white;
+            border: 1px solid #dc2626;
+        }
+        
+        .btn-danger:hover {
+            background-color: #b91c1c;
+            border-color: #b91c1c;
+        }
+    </style>
+</body>
+</html>

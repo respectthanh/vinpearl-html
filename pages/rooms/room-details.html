@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="index.html" class="active" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="../nearby/index.html" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="../auth/index.html" class="btn btn-white" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div id="loading-spinner" class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading room details...</p>
+        </div>
+
+        <!-- Room Details Content -->
+        <div id="room-details-content" style="display: none;">
+            <!-- Room Gallery -->
+            <section class="room-gallery">
+                <div class="room-gallery-main">
+                    <img id="room-main-image" src="" alt="">
+                </div>
+                <div class="room-gallery-thumbs" id="room-gallery-thumbs">
+                    <!-- Thumbnails will be added dynamically -->
+                </div>
+            </section>
+
+            <section class="room-details-section">
+                <div class="container">
+                    <div class="room-details-grid">
+                        <!-- Room Details Main Content -->
+                        <div class="room-details-main">
+                            <div class="room-header">
+                                <div class="room-title-section">
+                                    <h1 id="room-title" class="heading-1">Room Title</h1>
+                                    <div id="room-badges" class="room-badges">
+                                        <!-- Badges will be added dynamically -->
+                                    </div>
+                                </div>
+                                <div class="room-price-section">
+                                    <div class="room-price">
+                                        <span id="room-price">$0</span> / night
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="room-highlights">
+                                <div id="room-features" class="room-features-grid">
+                                    <!-- Features will be added dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="room-description">
+                                <h2 class="heading-3">Description</h2>
+                                <div id="room-description-text" class="description-text">
+                                    <!-- Description will be added dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="room-amenities">
+                                <h2 class="heading-3">Amenities</h2>
+                                <div id="room-amenities-list" class="amenities-grid">
+                                    <!-- Amenities will be added dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="room-policies">
+                                <h2 class="heading-3">Policies</h2>
+                                <div class="policies-grid">
+                                    <div class="policy-item">
+                                        <div class="policy-icon">⏰</div>
+                                        <div class="policy-details">
+                                            <h3>Check-in/Check-out</h3>
+                                            <p>Check-in: 2:00 PM - 10:00 PM<br>
+                                            Check-out: Before 12:00 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="policy-item">
+                                        <div class="policy-icon">🚬</div>
+                                        <div class="policy-details">
+                                            <h3>Smoking Policy</h3>
+                                            <p>No smoking allowed in rooms.<br>
+                                            Designated smoking areas available.</p>
+                                        </div>
+                                    </div>
+                                    <div class="policy-item">
+                                        <div class="policy-icon">👶</div>
+                                        <div class="policy-details">
+                                            <h3>Children Policy</h3>
+                                            <p>Children of all ages are welcome.<br>
+                                            Children under 12 stay free.</p>
+                                        </div>
+                                    </div>
+                                    <div class="policy-item">
+                                        <div class="policy-icon">🐕</div>
+                                        <div class="policy-details">
+                                            <h3>Pet Policy</h3>
+                                            <p>Pets are not allowed.<br>
+                                            Service animals are welcome.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Room Booking Sidebar -->
+                        <div class="room-booking-sidebar">
+                            <div class="booking-card">
+                                <h2 class="heading-3">Book This Room</h2>
+                                <div class="booking-form">
+                                    <div class="booking-field">
+                                        <label>Check In</label>
+                                        <div class="date-picker-wrapper">
+                                            <input type="text" id="details-check-in" placeholder="Select date" class="date-input" autocomplete="off">
+                                            <span class="date-icon">📅</span>
+                                        </div>
+                                    </div>
+                                    <div class="booking-field">
+                                        <label>Check Out</label>
+                                        <div class="date-picker-wrapper">
+                                            <input type="text" id="details-check-out" placeholder="Select date" class="date-input" autocomplete="off">
+                                            <span class="date-icon">📅</span>
+                                        </div>
+                                    </div>
+                                    <div class="booking-field">
+                                        <label>Guests</label>
+                                        <select id="details-guests" class="form-select">
+                                            <option value="1">1 Guest</option>
+                                            <option value="2" selected>2 Guests</option>
+                                            <option value="3">3 Guests</option>
+                                            <option value="4">4 Guests</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-breakdown">
+                                        <div class="price-row">
+                                            <span>Room Rate</span>
+                                            <span id="breakdown-rate">$0</span>
+                                        </div>
+                                        <div class="price-row">
+                                            <span>Taxes & Fees (10%)</span>
+                                            <span id="breakdown-taxes">$0</span>
+                                        </div>
+                                        <div class="price-divider"></div>
+                                        <div class="price-row price-total">
+                                            <span>Total</span>
+                                            <span id="breakdown-total">$0</span>
+                                        </div>
+                                    </div>
+                                    <button id="book-now-btn" class="btn btn-primary btn-full">Book Now</button>
+                                    <p class="booking-note">No payment required today. You'll pay during your stay.</p>
+                                </div>
+                            </div>
+                            <div class="need-help-card">
+                                <h3>Need Help?</h3>
+                                <p>Have questions or need assistance with your booking?</p>
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="contact-icon">📞</div>
+                                        <div class="contact-info">
+                                            <h4>Call Us</h4>
+                                            <p>+84 258 359 8888</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-method">
+                                        <div class="contact-icon">✉️</div>
+                                        <div class="contact-info">
+                                            <h4>Email Us</h4>
+                                            <p>reservations@vinpearl.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Similar Rooms -->
+            <section class="similar-rooms-section section bg-light">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="heading-2">Similar Rooms You May Like</h2>
+                    </div>
+                    <div class="similar-rooms-grid" id="similar-rooms-grid">
+                        <!-- Similar rooms will be added dynamically -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Room Not Found -->
+        <div id="room-not-found" class="room-not-found" style="display: none;">
+            <div class="container">
+                <div class="not-found-content">
+                    <div class="not-found-icon">🔍</div>
+                    <h2 class="heading-2">Room Not Found</h2>
+                    <p>We couldn't find the room you're looking for. It might have been removed or the URL is incorrect.</p>
+                    <a href="index.html" class="btn btn-primary">View All Rooms</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom styles for the room details page -->
+    <style>
+        /* Room Gallery */
+        .room-gallery {
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        
+        .room-gallery-main {
+            width: 100%;
+            height: 60vh;
+            max-height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .room-gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .room-gallery-main:hover img {
+            transform: scale(1.03);
+        }
+        
+        .room-gallery-thumbs {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+        }
+        
+        .gallery-thumb {
+            flex: 0 0 120px;
+            height: 80px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            overflow: hidden;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-thumb:hover {
+            opacity: 0.9;
+        }
+        
+        .gallery-thumb.active {
+            border-color: var(--color-primary-600);
+            opacity: 1;
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Room Details Layout */
+        .room-details-section {
+            padding: 3rem 0;
+        }
+        
+        .room-details-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        /* Room Header */
+        .room-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .room-title-section {
+            flex: 1;
+        }
+        
+        .room-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        
+        .room-price-section {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        
+        .room-price {
+            font-size: 1.1rem;
+            color: var(--color-gray-700);
+        }
+        
+        .room-price span {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-primary-600);
+        }
+        
+        /* Room Highlights */
+        .room-highlights {
+            background-color: var(--color-gray-50);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .room-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        
+        .room-feature {
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+            color: var(--color-primary-600);
+        }
+        
+        .feature-text {
+            color: var(--color-gray-800);
+            font-weight: 500;
+        }
+        
+        /* Room Description */
+        .room-description {
+            margin-bottom: 2.5rem;
+        }
+        
+        .description-text {
+            margin-top: 1rem;
+            color: var(--color-gray-700);
+            line-height: 1.7;
+        }
+        
+        .description-text p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Room Amenities */
+        .room-amenities {
+            margin-bottom: 2.5rem;
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        
+        .amenity-icon {
+            margin-right: 0.75rem;
+            color: var(--color-primary-600);
+        }
+        
+        /* Room Policies */
+        .room-policies {
+            margin-bottom: 2.5rem;
+        }
+        
+        .policies-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .policy-item {
+            display: flex;
+            background-color: var(--color-gray-50);
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+        }
+        
+        .policy-icon {
+            font-size: 1.75rem;
+            margin-right: 1rem;
+            color: var(--color-gray-800);
+        }
+        
+        .policy-details h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: 0.5rem;
+        }
+        
+        .policy-details p {
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+            line-height: 1.5;
+        }
+        
+        /* Booking Sidebar */
+        .room-booking-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .booking-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem;
+        }
+        
+        .booking-form {
+            margin-top: 1.5rem;
+        }
+        
+        .booking-field {
+            margin-bottom: 1.25rem;
+        }
+        
+        .booking-field label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-800);
+        }
+        
+        .price-breakdown {
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--color-gray-200);
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: var(--color-gray-700);
+            font-size: 0.95rem;
+        }
+        
+        .price-total {
+            font-weight: 600;
+            color: var(--color-gray-900);
+            font-size: 1.1rem;
+        }
+        
+        .price-divider {
+            height: 1px;
+            background-color: var(--color-gray-200);
+            margin: 0.75rem 0;
+        }
+        
+        .booking-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-gray-600);
+            margin-top: 1rem;
+        }
+        
+        .need-help-card {
+            background-color: var(--color-gray-50);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        
+        .need-help-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-900);
+        }
+        
+        .need-help-card p {
+            color: var(--color-gray-700);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        /* Similar Rooms */
+        .similar-rooms-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* Room Not Found */
+        .room-not-found {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .not-found-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .not-found-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .room-not-found p {
+            color: var(--color-gray-700);
+            margin-bottom: 2rem;
+        }
+        
+        /* Loading Spinner */
+        .loading-spinner {
+            padding: 5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border-left-color: var(--color-primary-600);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .room-features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .amenities-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .policies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .similar-rooms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .room-header {
+                flex-direction: row;
+            }
+            
+            .room-price-section {
+                justify-content: flex-end;
+            }
+            
+            .room-details-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+            
+            .similar-rooms-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .room-booking-sidebar {
+                position: sticky;
+                top: 2rem;
+                height: fit-content;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/room-details.js"></script>
+</body>
+</html> 

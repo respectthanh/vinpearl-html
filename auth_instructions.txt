@@ -1,0 +1,45 @@
+VINPEARL AUTHENTICATION SYSTEM INSTRUCTIONS
+=======================================
+
+I've completely rebuilt the authentication system with PHP sessions. Here's how to test it:
+
+1. START THE PHP SERVER:
+   ```
+   php -S localhost:8000
+   ```
+
+2. VISIT THE LOGIN PAGE:
+   http://localhost:8000/pages/auth/login.php
+
+3. LOGIN WITH YOUR CREDENTIALS:
+   - If you don't have an account, use the Register tab to create one.
+   - If you already have a user in the database, use those credentials.
+
+4. TEST DEBUGGING TOOLS:
+   - Authentication Debug: http://localhost:8000/pages/auth/debug_auth.php
+     (Shows session status, login status, and database connection)
+
+5. CHECK LOGIN STATE:
+   - After logging in, you should see your user menu in the header
+   - The "Sign In" button should be replaced with your user avatar
+
+6. TEST LOGOUT:
+   - Click on your username/avatar and select "Logout"
+   - You should be redirected to the login page with a success message
+
+IMPORTANT CHANGES:
+-----------------
+1. Converted to PHP-based authentication (no more AJAX)
+2. All pages use header.php and footer.php includes
+3. Session-based authentication throughout the site
+4. Proper error handling and user feedback
+5. Security improvements with prepared statements and password hashing
+
+TESTING TIPS:
+------------
+- If you encounter issues, check the debug_auth.php page
+- Clear your browser cache if you experience unexpected behavior
+- Make sure your PHP server is running correctly
+- Check database credentials in includes/db_connect.php
+
+For any issues, refer to the debug tools or check the PHP error logs. 

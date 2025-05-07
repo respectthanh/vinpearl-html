@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Packages - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" class="active" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="../nearby/index.html" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="../auth/index.html" class="btn btn-white" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1920" alt="Vinpearl Nha Trang Packages">
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="heading-1 fade-in">Exclusive Vacation Packages</h1>
+                    <p class="hero-subtitle fade-in">Discover our curated vacation packages designed to provide the ultimate Nha Trang experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section class="packages section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Our Vacation Packages</h2>
+                    <p class="section-description slide-up">Experience the best of Nha Trang with our carefully crafted packages designed to suit every type of traveler.</p>
+                </div>
+                
+                <div class="cards-grid stagger-animation">
+                    <!-- Package Card 1 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?q=80&w=600" alt="Romantic Getaway">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Romantic Getaway</h3>
+                            <p class="card-text">Perfect for couples looking for a romantic escape. Includes luxury accommodations, couple's spa treatment, and private dining experiences.</p>
+                            <ul class="package-features">
+                                <li>3 Nights in Deluxe Ocean View Room</li>
+                                <li>Couple's Spa Treatment</li>
+                                <li>Private Beach Dinner</li>
+                                <li>Romantic Room Decoration</li>
+                                <li>Daily Breakfast</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="price">$699 / couple</span>
+                                <a href="romantic-getaway.html" class="card-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Card 2 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=600" alt="Family Adventure">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Family Adventure</h3>
+                            <p class="card-text">Create unforgettable memories with the whole family. Includes spacious family suite, kid-friendly activities, and island excursions.</p>
+                            <ul class="package-features">
+                                <li>4 Nights in Family Suite</li>
+                                <li>Island Hopping Tour</li>
+                                <li>Kids Club Access</li>
+                                <li>Family Cooking Class</li>
+                                <li>Daily Breakfast</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="price">$1,299 / family</span>
+                                <a href="family-adventure.html" class="card-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Card 3 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600" alt="Wellness Retreat">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Wellness Retreat</h3>
+                            <p class="card-text">Rejuvenate your mind, body, and soul with our wellness package. Includes daily spa treatments, yoga sessions, and healthy dining options.</p>
+                            <ul class="package-features">
+                                <li>5 Nights in Garden View Room</li>
+                                <li>Daily Spa Treatment</li>
+                                <li>Morning Yoga Sessions</li>
+                                <li>Healthy Meal Plan</li>
+                                <li>Meditation Classes</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="price">$899 / person</span>
+                                <a href="wellness-retreat.html" class="card-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Card 4 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=600" alt="Adventure Explorer">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Adventure Explorer</h3>
+                            <p class="card-text">For thrill-seekers and adventure enthusiasts. Includes daily excursions, water sports, and guided hiking tours.</p>
+                            <ul class="package-features">
+                                <li>4 Nights in Mountain View Room</li>
+                                <li>Scuba Diving Experience</li>
+                                <li>Hiking Tour</li>
+                                <li>Water Sports Activities</li>
+                                <li>Daily Breakfast</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="price">$799 / person</span>
+                                <a href="adventure-explorer.html" class="card-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Card 5 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?q=80&w=600" alt="Cultural Immersion">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cultural Immersion</h3>
+                            <p class="card-text">Discover the rich cultural heritage of Vietnam. Includes cultural tours, traditional cooking classes, and historical site visits.</p>
+                            <ul class="package-features">
+                                <li>3 Nights in City View Room</li>
+                                <li>Cultural Heritage Tour</li>
+                                <li>Vietnamese Cooking Class</li>
+                                <li>Traditional Dance Show</li>
+                                <li>Daily Breakfast</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="price">$599 / person</span>
+                                <a href="cultural-immersion.html" class="card-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Card 6 -->
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=600" alt="Luxury Escape">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Luxury Escape</h3>
+                            <p class="card-text">Indulge in the ultimate luxury experience. Includes presidential suite accommodation, personal butler service, and VIP experiences.</p>
+                            <ul class="package-features">
+                                <li>3 Nights in Presidential Suite</li>
+                                <li>Personal Butler Service</li>
+                                <li>Private Pool Access</li>
+                                <li>Luxury Car Transfer</li>
+                                <li>Premium Dining Experiences</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="price">$1,999 / person</span>
+                                <a href="luxury-escape.html" class="card-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Package Section -->
+        <section class="custom-package section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Create Your Custom Package</h2>
+                    <p class="section-description slide-up">Can't find what you're looking for? Let us create a personalized package tailored to your preferences.</p>
+                </div>
+                
+                <div class="custom-package-form">
+                    <form class="booking-form">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="Your email">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="guests">Number of Guests</label>
+                                <input type="number" id="guests" class="form-control" min="1" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="stay-length">Length of Stay (nights)</label>
+                                <input type="number" id="stay-length" class="form-control" min="1" value="3">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="room-type">Room Type Preference</label>
+                                <select id="room-type" class="form-select">
+                                    <option value="deluxe">Deluxe Room</option>
+                                    <option value="family">Family Suite</option>
+                                    <option value="ocean-view">Ocean View</option>
+                                    <option value="presidential">Presidential Suite</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="budget">Budget Range ($)</label>
+                                <select id="budget" class="form-select">
+                                    <option value="500-700">$500 - $700</option>
+                                    <option value="700-1000">$700 - $1000</option>
+                                    <option value="1000-1500">$1000 - $1500</option>
+                                    <option value="1500+">$1500+</option>
+                                </select>
+                            </div>
+                            <div class="form-group md:grid-cols-2">
+                                <label class="form-label">Interests (Select all that apply)</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" id="interest-spa" class="form-check-input">
+                                        <label for="interest-spa" class="form-check-label">Spa & Wellness</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" id="interest-tours" class="form-check-input">
+                                        <label for="interest-tours" class="form-check-label">Tours & Excursions</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" id="interest-adventure" class="form-check-input">
+                                        <label for="interest-adventure" class="form-check-label">Adventure Activities</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" id="interest-dining" class="form-check-input">
+                                        <label for="interest-dining" class="form-check-label">Fine Dining</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" id="interest-cultural" class="form-check-input">
+                                        <label for="interest-cultural" class="form-check-label">Cultural Experiences</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" id="interest-family" class="form-check-input">
+                                        <label for="interest-family" class="form-check-label">Family Activities</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="special-requests">Special Requests or Requirements</label>
+                                <textarea id="special-requests" class="form-control" rows="4" placeholder="Any special requests or requirements"></textarea>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <button type="submit" class="btn btn-primary">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section scroll-reveal">
+            <div class="container">
+                <h2 class="heading-2 slide-up">Ready to Experience Vinpearl Nha Trang?</h2>
+                <p class="cta-text slide-up">Book your dream vacation package today and create memories that will last a lifetime.</p>
+                <div class="slide-up">
+                    <a href="#" class="btn btn-white">Book Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

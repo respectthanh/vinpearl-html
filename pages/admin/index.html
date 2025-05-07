@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Simple Header for Admin Pages -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="index.html" class="active">Dashboard</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="content.html">Content</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <button id="logout-button" class="btn btn-outline">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="admin-container">
+            <!-- Admin Auth Guard -->
+            <div id="auth-guard" class="auth-guard">
+                <div class="auth-guard-content">
+                    <div class="spinner"></div>
+                    <p>Checking authentication...</p>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard Content (initially hidden) -->
+            <div id="admin-content" class="admin-content" style="display: none;">
+                <div class="admin-header-section">
+                    <h1 class="heading-1">Admin Dashboard</h1>
+                    <p class="section-description">Welcome back, <span id="admin-name">Admin</span></p>
+                </div>
+                
+                <!-- Quick Stats -->
+                <section class="admin-section">
+                    <h2 class="heading-2">Overview</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-calendar"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Active Bookings</h3>
+                                <p class="stat-value">24</p>
+                                <p class="stat-change positive">+12% from last week</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Users</h3>
+                                <p class="stat-value">138</p>
+                                <p class="stat-change positive">+5% from last month</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-dollar"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Revenue</h3>
+                                <p class="stat-value">$12,450</p>
+                                <p class="stat-change positive">+18% from last month</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="icon-star"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Avg. Rating</h3>
+                                <p class="stat-value">4.8/5</p>
+                                <p class="stat-change neutral">Same as last month</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Recent Bookings -->
+                <section class="admin-section">
+                    <div class="section-header-with-action">
+                        <h2 class="heading-2">Recent Bookings</h2>
+                        <a href="bookings.html" class="btn btn-outline">View All</a>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#BK-2025</td>
+                                    <td>John Smith</td>
+                                    <td>Room</td>
+                                    <td>May 5, 2025</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                    <td>$450</td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#BK-2024</td>
+                                    <td>Maria Garcia</td>
+                                    <td>Tour</td>
+                                    <td>May 4, 2025</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>$85</td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#BK-2023</td>
+                                    <td>Robert Johnson</td>
+                                    <td>Package</td>
+                                    <td>May 3, 2025</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                    <td>$1,200</td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#BK-2022</td>
+                                    <td>Sarah Wilson</td>
+                                    <td>Room</td>
+                                    <td>May 2, 2025</td>
+                                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                                    <td>$350</td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#BK-2021</td>
+                                    <td>David Lee</td>
+                                    <td>Tour</td>
+                                    <td>May 1, 2025</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td>$65</td>
+                                    <td class="actions">
+                                        <button class="action-btn view-btn">View</button>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Quick Actions -->
+                <section class="admin-section">
+                    <h2 class="heading-2">Quick Actions</h2>
+                    
+                    <div class="quick-actions-grid">
+                        <a href="tours.html" class="quick-action-card">
+                            <div class="quick-action-icon">
+                                <i class="icon-globe"></i>
+                            </div>
+                            <h3 class="quick-action-title">Manage Tours</h3>
+                            <p>Add, edit, or delete tour offerings</p>
+                        </a>
+                        
+                        <a href="packages.html" class="quick-action-card">
+                            <div class="quick-action-icon">
+                                <i class="icon-package"></i>
+                            </div>
+                            <h3 class="quick-action-title">Manage Packages</h3>
+                            <p>Create and modify package deals</p>
+                        </a>
+                        
+                        <a href="content.html" class="quick-action-card">
+                            <div class="quick-action-icon">
+                                <i class="icon-edit"></i>
+                            </div>
+                            <h3 class="quick-action-title">Edit Content</h3>
+                            <p>Update website content and images</p>
+                        </a>
+                        
+                        <a href="reviews.html" class="quick-action-card">
+                            <div class="quick-action-icon">
+                                <i class="icon-star"></i>
+                            </div>
+                            <h3 class="quick-action-title">Manage Reviews</h3>
+                            <p>Moderate and respond to guest reviews</p>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate authentication check
+            setTimeout(function() {
+                // Check if user is logged in and is an admin
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const isAdmin = localStorage.getItem('userRole') === 'ADMIN';
+                
+                if (!isLoggedIn) {
+                    // Redirect to login page if not logged in
+                    showError('You must be logged in to access this area');
+                    setTimeout(() => {
+                        window.location.href = '../auth/index.html';
+                    }, 2000);
+                } else if (!isAdmin) {
+                    // Redirect to homepage if not an admin
+                    showError('You do not have permission to access this area');
+                    setTimeout(() => {
+                        window.location.href = '../../index.html';
+                    }, 2000);
+                } else {
+                    // Show admin content if user is logged in and is an admin
+                    document.getElementById('auth-guard').style.display = 'none';
+                    document.getElementById('admin-content').style.display = 'block';
+                    
+                    // Set admin name
+                    const userName = localStorage.getItem('userName') || 'Admin';
+                    document.getElementById('admin-name').textContent = userName;
+                }
+            }, 1500); // Simulate loading delay
+            
+            // Logout button handler
+            document.getElementById('logout-button').addEventListener('click', function() {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userName');
+                window.location.href = '../auth/index.html';
+            });
+            
+            // Function to show error message
+            function showError(message) {
+                const authGuard = document.getElementById('auth-guard');
+                authGuard.innerHTML = `
+                    <div class="auth-guard-content error">
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+
+    <!-- Custom styles for admin pages -->
+    <style>
+        /* Admin header styles */
+        .admin-header {
+            background-color: #1a2b3c;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .admin-nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .admin-nav a {
+            color: #fff;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .admin-nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+        }
+        
+        /* Admin container */
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 1rem 2rem;
+        }
+        
+        /* Auth guard */
+        .auth-guard {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+        
+        .auth-guard-content {
+            text-align: center;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #1a2b3c;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .auth-guard-content.error {
+            color: #e53e3e;
+            font-weight: 600;
+        }
+        
+        /* Admin header section */
+        .admin-header-section {
+            margin-bottom: 2rem;
+        }
+        
+        /* Admin sections */
+        .admin-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-header-with-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            display: flex;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #4a6fa5;
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            color: #4a6fa5;
+            margin-right: 1rem;
+        }
+        
+        .stat-title {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-change {
+            font-size: 0.8rem;
+        }
+        
+        .stat-change.positive {
+            color: #10b981;
+        }
+        
+        .stat-change.negative {
+            color: #ef4444;
+        }
+        
+        .stat-change.neutral {
+            color: #6b7280;
+        }
+        
+        /* Table styles */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .admin-table th,
+        .admin-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        
+        .admin-table thead {
+            background-color: #f1f5f9;
+        }
+        
+        .admin-table th {
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .admin-table tbody tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .admin-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Status badges */
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-badge.confirmed {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+        
+        .status-badge.pending {
+            background-color: #fef3c7;
+            color: #b45309;
+        }
+        
+        .status-badge.cancelled {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .status-badge.completed {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+        }
+        
+        /* Action buttons */
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 0.875rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .action-btn.view-btn {
+            color: #4f46e5;
+        }
+        
+        .action-btn.edit-btn {
+            color: #0891b2;
+        }
+        
+        .action-btn.delete-btn {
+            color: #dc2626;
+        }
+        
+        .action-btn:hover {
+            background-color: #f3f4f6;
+        }
+        
+        /* Quick actions grid */
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .quick-action-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .quick-action-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            border-color: #d1d5db;
+        }
+        
+        .quick-action-icon {
+            font-size: 2rem;
+            color: #4a6fa5;
+            margin-bottom: 1rem;
+        }
+        
+        .quick-action-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .quick-action-card p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .admin-nav {
+                display: none;
+            }
+            
+            .admin-header-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section-header-with-action {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .stats-grid,
+            .quick-actions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            }
+        }
+    </style>
+</body>
+</html>

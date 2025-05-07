@@ -1,0 +1,233 @@
+/* Tours Page Specific Styles */
+
+/* Filter Tours Section */
+.filters {
+  padding: 2rem 0;
+}
+
+.filter-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--color-gray-300);
+  color: var(--color-gray-700);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-standard);
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary-600);
+  color: white;
+  border-color: var(--color-primary-600);
+}
+
+.section-sm {
+  padding: 2.5rem 0;
+}
+
+.bg-gray-50 {
+  background-color: var(--color-gray-50);
+}
+
+/* Tour Cards */
+.tour-price {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary-600);
+}
+
+.tour-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+}
+
+.tour-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--color-primary-600);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+/* Card Footer Button */
+.card-footer .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border: 1px solid var(--color-primary-600);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* How It Works Section */
+.how-it-works {
+  background-color: white;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.step-item {
+  background-color: var(--color-gray-50);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-prominent);
+}
+
+.step-number {
+  background-color: var(--color-primary-600);
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.step-title {
+  font-family: var(--font-family-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900);
+}
+
+.step-description {
+  color: var(--color-gray-700);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Flash Message */
+.flash-message {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  max-width: 24rem;
+  box-shadow: var(--shadow-prominent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: flashMessageIn 0.3s ease-out;
+}
+
+.flash-message.success {
+  border-left: 4px solid #10b981;
+}
+
+.flash-message.error {
+  border-left: 4px solid #ef4444;
+}
+
+.flash-message.info {
+  border-left: 4px solid #3b82f6;
+}
+
+.flash-message p {
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.close-message {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-gray-500);
+  padding: 0.25rem;
+}
+
+.close-message:hover {
+  color: var(--color-gray-700);
+}
+
+@keyframes flashMessageIn {
+  from { 
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .filter-controls {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .filter-controls h2 {
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+} 

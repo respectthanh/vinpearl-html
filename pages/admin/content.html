@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management - Vinpearl Admin</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header for Admin Pages -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="content.html" class="active">Content</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <button id="logout-button" class="btn btn-outline">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="admin-container">
+            <!-- Admin Auth Guard -->
+            <div id="auth-guard" class="auth-guard">
+                <div class="auth-guard-content">
+                    <div class="spinner"></div>
+                    <p>Checking authentication...</p>
+                </div>
+            </div>
+
+            <!-- Admin Content (initially hidden) -->
+            <div id="admin-content" class="admin-content" style="display: none;">
+                <div class="admin-header-section">
+                    <h1 class="heading-1">Content Management</h1>
+                    <p class="section-description">Manage website content, images, and promotional materials.</p>
+                </div>
+                
+                <!-- Content Navigation -->
+                <section class="admin-section">
+                    <div class="content-nav">
+                        <button class="content-nav-item active" data-content="homepage">Homepage</button>
+                        <button class="content-nav-item" data-content="rooms">Rooms</button>
+                        <button class="content-nav-item" data-content="tours">Tours</button>
+                        <button class="content-nav-item" data-content="packages">Packages</button>
+                        <button class="content-nav-item" data-content="about">About Us</button>
+                        <button class="content-nav-item" data-content="footer">Footer</button>
+                    </div>
+                    
+                    <!-- Content Management Area -->
+                    <div class="content-management-area">
+                        <!-- Homepage Content Section -->
+                        <div class="content-section active" id="homepage-content">
+                            <h2 class="heading-2">Homepage Content</h2>
+                            
+                            <!-- Hero Section -->
+                            <div class="content-card">
+                                <div class="content-card-header">
+                                    <h3>Hero Section</h3>
+                                    <button class="btn btn-sm btn-primary edit-content-btn" data-section="hero">Edit</button>
+                                </div>
+                                <div class="content-card-body">
+                                    <div class="preview-with-info">
+                                        <div class="content-preview">
+                                            <img src="../../images/attractions/nha-trang-panorama.jpg" alt="Hero Image" class="preview-image">
+                                        </div>
+                                        <div class="content-info">
+                                            <h4>Hero Title</h4>
+                                            <p>Experience Luxury in Paradise</p>
+                                            
+                                            <h4>Subtitle</h4>
+                                            <p>Welcome to the premier beachfront resort in Nha Trang with world-class amenities and unparalleled service.</p>
+                                            
+                                            <h4>Call to Action</h4>
+                                            <p><strong>Button 1:</strong> Book Your Stay</p>
+                                            <p><strong>Button 2:</strong> Discover More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Featured Rooms -->
+                            <div class="content-card">
+                                <div class="content-card-header">
+                                    <h3>Featured Rooms</h3>
+                                    <button class="btn btn-sm btn-primary edit-content-btn" data-section="featured-rooms">Edit</button>
+                                </div>
+                                <div class="content-card-body">
+                                    <div class="content-grid">
+                                        <div class="content-grid-item">
+                                            <img src="../../images/attractions/nha-trang-panorama.jpg" alt="Deluxe Ocean View Room" class="grid-item-image">
+                                            <div class="grid-item-info">
+                                                <h4>Deluxe Ocean View Room</h4>
+                                                <p>45m² | 2 Adults, 1 Child | $250 per night</p>
+                                            </div>
+                                            <div class="grid-item-actions">
+                                                <button class="btn btn-sm btn-outline">Edit</button>
+                                                <button class="btn btn-sm btn-outline btn-danger">Remove</button>
+                                            </div>
+                                        </div>
+                                        <div class="content-grid-item">
+                                            <img src="../../images/attractions/hon-mun-island.jpg" alt="Premium Suite" class="grid-item-image">
+                                            <div class="grid-item-info">
+                                                <h4>Premium Suite</h4>
+                                                <p>65m² | 3 Adults | $350 per night</p>
+                                            </div>
+                                            <div class="grid-item-actions">
+                                                <button class="btn btn-sm btn-outline">Edit</button>
+                                                <button class="btn btn-sm btn-outline btn-danger">Remove</button>
+                                            </div>
+                                        </div>
+                                        <div class="content-grid-item add-new">
+                                            <div class="add-item-placeholder">
+                                                <span>+</span>
+                                                <p>Add New Room</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Special Offers -->
+                            <div class="content-card">
+                                <div class="content-card-header">
+                                    <h3>Special Offers</h3>
+                                    <button class="btn btn-sm btn-primary edit-content-btn" data-section="special-offers">Edit</button>
+                                </div>
+                                <div class="content-card-body">
+                                    <div class="content-info">
+                                        <h4>Special Offers Section Title</h4>
+                                        <p>Limited Time Offers</p>
+                                        
+                                        <h4>Description</h4>
+                                        <p>Take advantage of our exclusive promotions and special packages designed to enhance your stay at Vinpearl Nha Trang Resort.</p>
+                                    </div>
+                                    
+                                    <div class="offers-list">
+                                        <div class="offer-item">
+                                            <h4>Summer Escape Package</h4>
+                                            <p>20% off on all room bookings from June to August</p>
+                                            <div class="offer-actions">
+                                                <button class="btn btn-sm btn-outline">Edit</button>
+                                                <button class="btn btn-sm btn-outline btn-danger">Remove</button>
+                                            </div>
+                                        </div>
+                                        <div class="offer-item">
+                                            <h4>Honeymoon Special</h4>
+                                            <p>Complimentary bottle of champagne and spa treatment for honeymooners</p>
+                                            <div class="offer-actions">
+                                                <button class="btn btn-sm btn-outline">Edit</button>
+                                                <button class="btn btn-sm btn-outline btn-danger">Remove</button>
+                                            </div>
+                                        </div>
+                                        <div class="add-offer">
+                                            <button class="btn btn-outline">+ Add New Offer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonials -->
+                            <div class="content-card">
+                                <div class="content-card-header">
+                                    <h3>Testimonials</h3>
+                                    <button class="btn btn-sm btn-primary edit-content-btn" data-section="testimonials">Edit</button>
+                                </div>
+                                <div class="content-card-body">
+                                    <div class="content-info">
+                                        <h4>Testimonials Section Title</h4>
+                                        <p>What Our Guests Say</p>
+                                    </div>
+                                    
+                                    <div class="testimonials-list">
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-content">
+                                                <p>"An amazing experience! The staff was incredibly attentive and the facilities were world-class."</p>
+                                            </div>
+                                            <div class="testimonial-author">
+                                                <p><strong>John Smith</strong> - New York, USA</p>
+                                            </div>
+                                            <div class="testimonial-actions">
+                                                <button class="btn btn-sm btn-outline">Edit</button>
+                                                <button class="btn btn-sm btn-outline btn-danger">Remove</button>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-content">
+                                                <p>"The view from our room was breathtaking. We'll definitely be coming back next year!"</p>
+                                            </div>
+                                            <div class="testimonial-author">
+                                                <p><strong>Maria Garcia</strong> - Madrid, Spain</p>
+                                            </div>
+                                            <div class="testimonial-actions">
+                                                <button class="btn btn-sm btn-outline">Edit</button>
+                                                <button class="btn btn-sm btn-outline btn-danger">Remove</button>
+                                            </div>
+                                        </div>
+                                        <div class="add-testimonial">
+                                            <button class="btn btn-outline">+ Add New Testimonial</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rooms Content Section (initially hidden) -->
+                        <div class="content-section" id="rooms-content">
+                            <h2 class="heading-2">Rooms Page Content</h2>
+                            
+                            <!-- Rooms Hero Section -->
+                            <div class="content-card">
+                                <div class="content-card-header">
+                                    <h3>Rooms Hero Section</h3>
+                                    <button class="btn btn-sm btn-primary edit-content-btn" data-section="rooms-hero">Edit</button>
+                                </div>
+                                <div class="content-card-body">
+                                    <div class="preview-with-info">
+                                        <div class="content-preview">
+                                            <img src="../../images/attractions/nha-trang-panorama.jpg" alt="Rooms Hero Image" class="preview-image">
+                                        </div>
+                                        <div class="content-info">
+                                            <h4>Page Title</h4>
+                                            <p>Luxurious Accommodations</p>
+                                            
+                                            <h4>Page Description</h4>
+                                            <p>Experience unrivaled comfort in our elegantly appointed rooms and suites with stunning ocean views.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Place for more room page content sections -->
+                        </div>
+                        
+                        <!-- More content sections for Tours, Packages, About, Footer would go here... -->
+                    </div>
+                </section>
+                
+                <!-- Media Library -->
+                <section class="admin-section">
+                    <div class="section-header-with-action">
+                        <h2 class="heading-2">Media Library</h2>
+                        <button id="upload-media-btn" class="btn btn-primary">Upload New Media</button>
+                    </div>
+                    
+                    <!-- Media Filter -->
+                    <div class="filter-row">
+                        <div class="search-input">
+                            <input type="text" id="search-media" placeholder="Search media...">
+                        </div>
+                        <div class="filter-group">
+                            <select id="filter-media-type">
+                                <option value="">All Types</option>
+                                <option value="image">Images</option>
+                                <option value="video">Videos</option>
+                            </select>
+                            <select id="filter-media-category">
+                                <option value="">All Categories</option>
+                                <option value="rooms">Rooms</option>
+                                <option value="facilities">Facilities</option>
+                                <option value="dining">Dining</option>
+                                <option value="attractions">Attractions</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Media Gallery -->
+                    <div class="media-gallery">
+                        <div class="media-item">
+                            <img src="../../images/attractions/nha-trang-panorama.jpg" alt="Nha Trang Panorama">
+                            <div class="media-info">
+                                <p>nha-trang-panorama.jpg</p>
+                                <span>1920×1080 • 450KB</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="../../images/attractions/hon-mun-island.jpg" alt="Hon Mun Island">
+                            <div class="media-info">
+                                <p>hon-mun-island.jpg</p>
+                                <span>1920×1080 • 380KB</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="../../images/attractions/ba-ho-waterfalls.jpg" alt="Ba Ho Waterfalls">
+                            <div class="media-info">
+                                <p>ba-ho-waterfalls.jpg</p>
+                                <span>1920×1080 • 420KB</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="../../images/attractions/doc-let-beach.jpg" alt="Doc Let Beach">
+                            <div class="media-info">
+                                <p>doc-let-beach.jpg</p>
+                                <span>1920×1080 • 390KB</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="../../images/attractions/long-son-pagoda.jpg" alt="Long Son Pagoda">
+                            <div class="media-info">
+                                <p>long-son-pagoda.jpg</p>
+                                <span>1920×1080 • 410KB</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="../../images/attractions/sailing-club.jpg" alt="Sailing Club">
+                            <div class="media-info">
+                                <p>sailing-club.jpg</p>
+                                <span>1920×1080 • 370KB</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>&laquo;</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">&raquo;</button>
+                    </div>
+                </section>
+                
+                <!-- Upload Media Modal -->
+                <div id="upload-media-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <h2>Upload Media</h2>
+                        
+                        <form id="upload-media-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="media-file">Select File</label>
+                                <input type="file" id="media-file" name="file" accept="image/*,video/*">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="media-title">Title</label>
+                                    <input type="text" id="media-title" name="title">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="media-alt">Alt Text</label>
+                                    <input type="text" id="media-alt" name="alt" placeholder="Describe the image for accessibility">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="media-category">Category</label>
+                                <select id="media-category" name="category">
+                                    <option value="rooms">Rooms</option>
+                                    <option value="facilities">Facilities</option>
+                                    <option value="dining">Dining</option>
+                                    <option value="attractions">Attractions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="media-description">Description (Optional)</label>
+                                <textarea id="media-description" name="description" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="cancel-upload">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Content Edit Modal -->
+                <div id="edit-content-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <h2 id="edit-section-title">Edit Hero Section</h2>
+                        
+                        <form id="edit-content-form" class="admin-form">
+                            <!-- This content will change dynamically based on what's being edited -->
+                            <div class="form-group">
+                                <label for="hero-title">Hero Title</label>
+                                <input type="text" id="hero-title" name="title" value="Experience Luxury in Paradise">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hero-subtitle">Subtitle</label>
+                                <textarea id="hero-subtitle" name="subtitle" rows="2">Welcome to the premier beachfront resort in Nha Trang with world-class amenities and unparalleled service.</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hero-image">Hero Image</label>
+                                <div class="image-selector">
+                                    <img src="../../images/attractions/nha-trang-panorama.jpg" alt="Current Hero Image" id="current-hero-image">
+                                    <button type="button" class="btn btn-outline">Change Image</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="button1-text">Button 1 Text</label>
+                                    <input type="text" id="button1-text" name="button1_text" value="Book Your Stay">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="button1-link">Button 1 Link</label>
+                                    <input type="text" id="button1-link" name="button1_link" value="/pages/rooms/index.html">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="button2-text">Button 2 Text</label>
+                                    <input type="text" id="button2-text" name="button2_text" value="Discover More">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="button2-link">Button 2 Link</label>
+                                    <input type="text" id="button2-link" name="button2_link" value="#about">
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="cancel-edit-content">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Authentication check
+            setTimeout(function() {
+                // Check if user is logged in and is an admin
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const isAdmin = localStorage.getItem('userRole') === 'ADMIN';
+                
+                if (!isLoggedIn) {
+                    showError('You must be logged in to access this area');
+                    setTimeout(() => {
+                        window.location.href = '../auth/index.html';
+                    }, 2000);
+                } else if (!isAdmin) {
+                    showError('You do not have permission to access this area');
+                    setTimeout(() => {
+                        window.location.href = '../../index.html';
+                    }, 2000);
+                } else {
+                    document.getElementById('auth-guard').style.display = 'none';
+                    document.getElementById('admin-content').style.display = 'block';
+                }
+            }, 1000);
+            
+            // Function to show error message
+            function showError(message) {
+                const authGuard = document.getElementById('auth-guard');
+                authGuard.innerHTML = `
+                    <div class="auth-guard-content error">
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+            
+            // Logout button handler
+            document.getElementById('logout-button').addEventListener('click', function() {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userName');
+                window.location.href = '../auth/index.html';
+            });
+            
+            // Content navigation
+            const contentNavItems = document.querySelectorAll('.content-nav-item');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            contentNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const contentType = this.getAttribute('data-content');
+                    
+                    // Update active nav item
+                    contentNavItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === contentType + '-content') {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Modal variables
+            const uploadMediaModal = document.getElementById('upload-media-modal');
+            const editContentModal = document.getElementById('edit-content-modal');
+            const uploadMediaBtn = document.getElementById('upload-media-btn');
+            const editContentBtns = document.querySelectorAll('.edit-content-btn');
+            const cancelUploadBtn = document.getElementById('cancel-upload');
+            const cancelEditContentBtn = document.getElementById('cancel-edit-content');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            
+            // Show Upload Media modal
+            uploadMediaBtn.addEventListener('click', function() {
+                uploadMediaModal.style.display = 'block';
+            });
+            
+            // Show Edit Content modal
+            editContentBtns.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionType = this.getAttribute('data-section');
+                    document.getElementById('edit-section-title').textContent = `Edit ${sectionType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())} Section`;
+                    
+                    // In a real application, you'd dynamically load the form fields based on the section type
+                    // For this demo, we're just using the same form for simplicity
+                    
+                    editContentModal.style.display = 'block';
+                });
+            });
+            
+            // Close modals with buttons
+            cancelUploadBtn.addEventListener('click', function() {
+                uploadMediaModal.style.display = 'none';
+            });
+            
+            cancelEditContentBtn.addEventListener('click', function() {
+                editContentModal.style.display = 'none';
+            });
+            
+            // Close modals with X button
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    uploadMediaModal.style.display = 'none';
+                    editContentModal.style.display = 'none';
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === uploadMediaModal) {
+                    uploadMediaModal.style.display = 'none';
+                }
+                if (event.target === editContentModal) {
+                    editContentModal.style.display = 'none';
+                }
+            });
+            
+            // Form submission (just for demonstration)
+            const uploadMediaForm = document.getElementById('upload-media-form');
+            uploadMediaForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real application, you'd send an AJAX request here
+                alert('Media uploaded successfully!');
+                uploadMediaModal.style.display = 'none';
+            });
+            
+            const editContentForm = document.getElementById('edit-content-form');
+            editContentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real application, you'd send an AJAX request here
+                alert('Content updated successfully!');
+                editContentModal.style.display = 'none';
+            });
+            
+            // Media search functionality
+            const searchMedia = document.getElementById('search-media');
+            searchMedia.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                const mediaItems = document.querySelectorAll('.media-item');
+                
+                mediaItems.forEach(item => {
+                    const mediaName = item.querySelector('.media-info p').textContent.toLowerCase();
+                    if (mediaName.includes(searchTerm)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Add event listeners for other interactions (grid item edits, offer edits, testimonial edits)
+            // For brevity, these are not implemented in this demo
+        });
+    </script>
+
+    <style>
+        /* Content management specific styles */
+        .content-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        
+        .content-nav-item {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: #4b5563;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+        
+        .content-nav-item.active {
+            color: #4a6fa5;
+            border-bottom-color: #4a6fa5;
+            font-weight: 500;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .content-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .content-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .content-card-header h3 {
+            margin: 0;
+            font-size: 1.125rem;
+        }
+        
+        .content-card-body {
+            padding: 1.5rem;
+        }
+        
+        .preview-with-info {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .content-preview {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .content-info {
+            flex-grow: 1;
+        }
+        
+        .content-info h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+            font-size: 1rem;
+        }
+        
+        .content-info p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-info p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Grid layout for content items */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .content-grid-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .grid-item-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .grid-item-info {
+            padding: 1rem;
+        }
+        
+        .grid-item-info h4 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .grid-item-info p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .grid-item-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 1rem 1rem;
+        }
+        
+        .content-grid-item.add-new {
+            border: 2px dashed #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 240px;
+            cursor: pointer;
+        }
+        
+        .add-item-placeholder {
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        .add-item-placeholder span {
+            font-size: 2.5rem;
+            display: block;
+            line-height: 1;
+        }
+        
+        /* Offers and testimonials styling */
+        .offers-list,
+        .testimonials-list {
+            margin-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1.5rem;
+        }
+        
+        .offer-item,
+        .testimonial-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .offer-item h4,
+        .testimonial-item h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .offer-item p,
+        .testimonial-content p {
+            margin: 0;
+        }
+        
+        .testimonial-author {
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .offer-actions,
+        .testimonial-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .add-offer,
+        .add-testimonial {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Media gallery */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .media-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .media-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .media-info {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .media-info p {
+            margin: 0 0 0.25rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .media-info span {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .media-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        /* Image selector in form */
+        .image-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .image-selector img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .preview-with-info {
+                flex-direction: column;
+            }
+            
+            .content-preview {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .preview-image {
+                max-height: 200px;
+                object-fit: cover;
+            }
+            
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+            
+            .media-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</body>
+</html>

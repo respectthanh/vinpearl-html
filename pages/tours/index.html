@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours & Experiences - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" class="active" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="../nearby/index.html" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="../auth/index.html" class="btn btn-white" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=1920" alt="Nha Trang Tours">
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="heading-1 fade-in">Discover Nha Trang Experiences</h1>
+                    <p class="hero-subtitle fade-in">Unforgettable adventures and guided tours in one of Vietnam's most beautiful destinations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filters section-sm bg-gray-50">
+            <div class="container">
+                <div class="filter-controls">
+                    <h2 class="text-xl font-medium mb-4">Filter Tours</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn active" data-filter="all">All Tours</button>
+                        <button class="filter-btn" data-filter="island">Island Tours</button>
+                        <button class="filter-btn" data-filter="city">City Tours</button>
+                        <button class="filter-btn" data-filter="adventure">Adventure</button>
+                        <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Tours Section -->
+        <section class="tours section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Featured Tours</h2>
+                    <p class="section-description slide-up">Our most popular guided experiences with expert local guides.</p>
+                </div>
+                
+                <div class="cards-grid stagger-animation">
+                    <!-- Tour 1 -->
+                    <div class="card zoom-in" data-category="island">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=600" alt="Island Hopping">
+                            <div class="image-overlay"></div>
+                            <div class="tour-badge">Most Popular</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Island Hopping Adventure</h3>
+                                <span class="tour-price">$65</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span class="tour-duration"><i class="icon-clock"></i> 8 hours</span>
+                                <span class="tour-difficulty">Easy</span>
+                                <span class="tour-group-size">Max 15</span>
+                            </div>
+                            <p class="card-text">Visit 4 stunning islands in the Nha Trang Bay, including snorkeling at Hon Mun, relaxing at Hon Tam, and enjoying a seafood lunch. Perfect for families and beach lovers.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour 2 -->
+                    <div class="card zoom-in" data-category="cultural">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=600" alt="Cultural Heritage Tour">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Cultural Heritage Tour</h3>
+                                <span class="tour-price">$45</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span class="tour-duration"><i class="icon-clock"></i> 6 hours</span>
+                                <span class="tour-difficulty">Easy</span>
+                                <span class="tour-group-size">Max 12</span>
+                            </div>
+                            <p class="card-text">Explore the rich cultural heritage of Nha Trang, including visits to Long Son Pagoda, Po Nagar Cham Towers, and the National Oceanographic Museum.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour 3 -->
+                    <div class="card zoom-in" data-category="adventure">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1682687220566-5599dbbebf11?q=80&w=600" alt="Scuba Diving">
+                            <div class="image-overlay"></div>
+                            <div class="tour-badge">Hot Deal</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Scuba Diving Experience</h3>
+                                <span class="tour-price">$85</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span class="tour-duration"><i class="icon-clock"></i> 7 hours</span>
+                                <span class="tour-difficulty">Moderate</span>
+                                <span class="tour-group-size">Max 8</span>
+                            </div>
+                            <p class="card-text">Discover the underwater wonders of Nha Trang Bay with expert diving instructors. Suitable for beginners and certified divers with training provided for first-timers.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour 4 -->
+                    <div class="card zoom-in" data-category="city">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1612701029278-690d2152df3b?q=80&w=600" alt="City Food Tour">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Street Food Journey</h3>
+                                <span class="tour-price">$35</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span class="tour-duration"><i class="icon-clock"></i> 4 hours</span>
+                                <span class="tour-difficulty">Easy</span>
+                                <span class="tour-group-size">Max 10</span>
+                            </div>
+                            <p class="card-text">Sample the best of Vietnamese cuisine in Nha Trang with our expert food guide. Visit local markets, street stalls, and hidden gems to taste authentic flavors.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour 5 -->
+                    <div class="card zoom-in" data-category="adventure">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1537725625283-dda37133108c?q=80&w=600" alt="Waterfall Trek">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Ba Ho Waterfall Trek</h3>
+                                <span class="tour-price">$55</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span class="tour-duration"><i class="icon-clock"></i> 7 hours</span>
+                                <span class="tour-difficulty">Moderate</span>
+                                <span class="tour-group-size">Max 12</span>
+                            </div>
+                            <p class="card-text">Hike through lush jungle to discover the three-tiered Ba Ho Waterfall. Swim in natural pools and enjoy a picnic lunch surrounded by stunning nature.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour 6 -->
+                    <div class="card zoom-in" data-category="island">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1544551763-8dd44758c2dd?q=80&w=600" alt="Sunset Cruise">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Sunset Dinner Cruise</h3>
+                                <span class="tour-price">$75</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span class="tour-duration"><i class="icon-clock"></i> 3 hours</span>
+                                <span class="tour-difficulty">Easy</span>
+                                <span class="tour-group-size">Max 20</span>
+                            </div>
+                            <p class="card-text">Enjoy a romantic evening on Nha Trang Bay with a luxury sunset cruise. Includes a gourmet dinner, live music, and spectacular views of the coastline.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Private Tours Section -->
+        <section class="private-tours section bg-gray-50 scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Exclusive Private Tours</h2>
+                    <p class="section-description slide-up">Customized experiences with your own private guide and transportation.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-animation">
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800" alt="VIP Island Tour">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">VIP Island Expedition</h3>
+                                <span class="tour-price">$350</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span>Private boat • Full day • All inclusive</span>
+                            </div>
+                            <p class="card-text">Experience the ultimate luxury tour of Nha Trang's islands on a private speedboat with your own guide. Visit secluded beaches, enjoy premium meals and drinks, and customize your itinerary.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-outline">Inquire Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1476900543704-4312b78632f8?q=80&w=800" alt="Countryside Adventure">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Countryside Discovery</h3>
+                                <span class="tour-price">$250</span>
+                            </div>
+                            <div class="tour-meta mb-3">
+                                <span>Private car • Full day • Lunch included</span>
+                            </div>
+                            <p class="card-text">Explore the hidden countryside around Nha Trang, visiting rural villages, rice fields, and local workshops. Meet local families and learn about traditional Vietnamese rural life.</p>
+                            <div class="card-footer">
+                                <button class="btn btn-outline">Inquire Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section class="how-it-works section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">How It Works</h2>
+                    <p class="section-description slide-up">Booking a tour with us is easy and convenient.</p>
+                </div>
+                
+                <div class="steps-grid stagger-animation">
+                    <div class="step-item slide-up">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Choose Your Tour</h3>
+                        <p class="step-description">Browse our selection of curated experiences and select the tour that matches your interests.</p>
+                    </div>
+                    
+                    <div class="step-item slide-up">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Book & Confirm</h3>
+                        <p class="step-description">Reserve your spot online or through our concierge. Receive instant confirmation and tour details.</p>
+                    </div>
+                    
+                    <div class="step-item slide-up">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Prepare</h3>
+                        <p class="step-description">Review the preparation guidelines we'll send you and get ready for your adventure.</p>
+                    </div>
+                    
+                    <div class="step-item slide-up">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Enjoy Your Tour</h3>
+                        <p class="step-description">Meet your guide at the designated time and place, then relax and enjoy your experience!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials section bg-gray-50 scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Guest Experiences</h2>
+                    <p class="section-description slide-up">Read what our guests have to say about our tours.</p>
+                </div>
+                
+                <div class="testimonials-grid stagger-animation">
+                    <div class="testimonial-card zoom-in">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"The island hopping tour was incredible! Our guide was knowledgeable and friendly, and the snorkeling spots were teeming with colorful fish. Highlight of our trip to Vietnam!"</p>
+                        <div class="testimonial-author">
+                            <span class="author-name">Sarah L. from Australia</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card zoom-in">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"We loved the street food tour! Our guide took us to places we would never have found on our own. Every dish was delicious and we learned so much about Vietnamese cuisine."</p>
+                        <div class="testimonial-author">
+                            <span class="author-name">Michael T. from Canada</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card zoom-in">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"The sunset cruise was absolutely magical! The food was excellent and watching the sun set over Nha Trang bay with a glass of champagne was unforgettable."</p>
+                        <div class="testimonial-author">
+                            <span class="author-name">Elena & Marco from Italy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Frequently Asked Questions</h2>
+                    <p class="section-description slide-up">Common questions about our tours and experiences.</p>
+                </div>
+                
+                <div class="faq-container stagger-animation">
+                    <div class="faq-item zoom-in">
+                        <h3 class="faq-question">What should I bring on tours?</h3>
+                        <div class="faq-answer">
+                            <p>For most tours, we recommend bringing sunscreen, hat, sunglasses, comfortable walking shoes, swimwear (for water activities), a light jacket or cover-up, camera, and cash for personal expenses. Specific tour requirements will be provided upon booking.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item zoom-in">
+                        <h3 class="faq-question">What is your cancellation policy?</h3>
+                        <div class="faq-answer">
+                            <p>Cancellations made 48 hours or more before the scheduled tour receive a full refund. Cancellations within 24-48 hours receive a 50% refund. Cancellations less than 24 hours in advance or no-shows are not refundable.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item zoom-in">
+                        <h3 class="faq-question">Are meals included in the tours?</h3>
+                        <div class="faq-answer">
+                            <p>Most full-day tours include lunch, and some special tours include additional meals as specified in the tour description. Beverages are typically not included unless explicitly mentioned.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item zoom-in">
+                        <h3 class="faq-question">Are the tours suitable for children?</h3>
+                        <div class="faq-answer">
+                            <p>Many of our tours are family-friendly and suitable for children. Each tour description indicates the recommended age groups and activity level. For specific concerns, please contact our tour concierge for guidance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item zoom-in">
+                        <h3 class="faq-question">How do I book a tour?</h3>
+                        <div class="faq-answer">
+                            <p>You can book tours online through our website, by phone, or through the resort concierge. We recommend booking at least 24 hours in advance to secure your spot, especially during high season.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section scroll-reveal">
+            <div class="container">
+                <h2 class="heading-2 slide-up">Ready for an Adventure?</h2>
+                <p class="cta-text slide-up">Book your tour today and discover the wonders of Nha Trang with our expert guides.</p>
+                <div class="slide-up">
+                    <a href="#" class="btn btn-white">View All Tours</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        // Filter functionality for tours
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const tours = document.querySelectorAll('[data-category]');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show all items if "all" is selected
+                    if (filter === 'all') {
+                        tours.forEach(item => {
+                            item.style.display = 'block';
+                        });
+                        return;
+                    }
+                    
+                    // Filter items
+                    tours.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

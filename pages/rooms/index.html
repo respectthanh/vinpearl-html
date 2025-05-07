@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Rooms - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="index.html" class="active" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="../nearby/index.html" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="../auth/index.html" class="btn btn-white" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="page-banner-bg">
+            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1920" alt="Vinpearl Rooms">
+            <div class="overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="page-banner-content">
+                <h1 class="heading-1" data-i18n="rooms.title">Our Luxurious Rooms</h1>
+                <p class="page-banner-subtitle" data-i18n="rooms.subtitle">Experience comfort and elegance in our beautifully designed accommodations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Search Bar - NEW -->
+    <section class="booking-bar">
+        <div class="container">
+            <form class="booking-search-form">
+                <div class="booking-form-grid">
+                    <div class="booking-form-field">
+                        <label>Check In</label>
+                        <div class="date-picker-wrapper">
+                            <input type="text" id="check-in-date" placeholder="Select date" class="date-input" autocomplete="off">
+                            <span class="date-icon">📅</span>
+                        </div>
+                    </div>
+                    <div class="booking-form-field">
+                        <label>Check Out</label>
+                        <div class="date-picker-wrapper">
+                            <input type="text" id="check-out-date" placeholder="Select date" class="date-input" autocomplete="off">
+                            <span class="date-icon">📅</span>
+                        </div>
+                    </div>
+                    <div class="booking-form-field">
+                        <label>Guests</label>
+                        <select id="booking-guests" class="form-select">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="booking-form-button">
+                        <button type="button" id="search-availability" class="btn btn-primary">Check Availability</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section class="rooms-list section">
+            <div class="container">
+                <div class="rooms-content-layout">
+                    <!-- Filters - Sidebar Layout -->
+                    <div class="filters-sidebar">
+                        <div class="filters-header">
+                            <h2 class="heading-3" data-i18n="rooms.filterTitle">Filter Rooms</h2>
+                            <button id="reset-filters" class="btn-text" data-i18n="rooms.resetFilters">Reset</button>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3 class="filter-section-title" data-i18n="rooms.roomType">Room Type</h3>
+                            <div class="filter-checkboxes">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="standard" name="type">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.standard">Standard</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="deluxe" name="type">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.deluxe">Deluxe</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="suite" name="type">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.suite">Suite</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="villa" name="type">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.villa">Villa</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3 class="filter-section-title" data-i18n="rooms.priceRange">Price Range</h3>
+                            <div class="range-slider-container">
+                                <input type="range" min="0" max="1000" value="500" class="price-range" id="price-range-slider">
+                                <div class="range-values">
+                                    <span>$0</span>
+                                    <span id="price-value">$<span id="current-price">500</span></span>
+                                    <span>$1000+</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3 class="filter-section-title" data-i18n="rooms.view">Room View</h3>
+                            <div class="filter-checkboxes">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="ocean" name="view">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.oceanView">Ocean View</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="garden" name="view">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.gardenView">Garden View</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="pool" name="view">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.poolView">Pool View</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="mountain" name="view">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label" data-i18n="rooms.mountainView">Mountain View</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-section">
+                            <h3 class="filter-section-title">Amenities</h3>
+                            <div class="filter-checkboxes">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="breakfast" name="amenities">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label">Breakfast Included</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="wifi" name="amenities">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label">Free WiFi</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="balcony" name="amenities">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label">Private Balcony</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="aircon" name="amenities">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label">Air Conditioning</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="minibar" name="amenities">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label">Mini Bar</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" value="pool" name="amenities">
+                                    <span class="checkmark"></span>
+                                    <span class="filter-label">Private Pool</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button id="apply-filters" class="btn btn-primary btn-full" data-i18n="rooms.applyFilters">Apply Filters</button>
+                    </div>
+                    
+                    <!-- Main Content - Room Listings -->
+                    <div class="rooms-main">
+                        <!-- Search Results Header -->
+                        <div class="search-results-header">
+                            <div class="results-info">
+                                <h2 class="heading-3"><span id="results-count">0</span> <span data-i18n="rooms.roomsFound">rooms found</span></h2>
+                            </div>
+                            <div class="sort-options">
+                                <label for="sort-by" data-i18n="rooms.sortBy">Sort by:</label>
+                                <select id="sort-by" class="form-select">
+                                    <option value="recommended" data-i18n="rooms.recommended">Recommended</option>
+                                    <option value="price_asc" data-i18n="rooms.priceLowToHigh">Price: Low to High</option>
+                                    <option value="price_desc" data-i18n="rooms.priceHighToLow">Price: High to Low</option>
+                                    <option value="name_asc" data-i18n="rooms.highestRated">Highest Rated</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Rooms Grid -->
+                        <div class="rooms-grid" id="rooms-grid">
+                            <!-- Room Items - Will be populated dynamically -->
+                            <div id="loading-spinner" class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>Loading rooms...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- No Results Message -->
+                        <div id="no-results" class="no-results-message" style="display: none;">
+                            <div class="no-results-icon">🔍</div>
+                            <h3 data-i18n="rooms.noResults">No rooms match your filters</h3>
+                            <p data-i18n="rooms.tryDifferent">Please try different filter options</p>
+                            <button id="reset-filters-inline" class="btn btn-primary" data-i18n="rooms.resetFilters">Reset Filters</button>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <button class="pagination-prev" disabled>&lt; <span data-i18n="rooms.previous">Previous</span></button>
+                            <div class="pagination-numbers">
+                                <!-- Pagination numbers will be inserted dynamically -->
+                            </div>
+                            <button class="pagination-next"><span data-i18n="rooms.next">Next</span> &gt;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Book Direct Benefits -->
+        <section class="benefits section bg-light scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up" data-i18n="rooms.whyBookDirect">Why Book Directly With Us</h2>
+                    <p class="section-description slide-up" data-i18n="rooms.directBenefitsDesc">Enjoy these exclusive benefits when booking through our official website</p>
+                </div>
+                
+                <div class="benefits-grid stagger-animation">
+                    <div class="benefit-card zoom-in">
+                        <div class="benefit-icon">🎁</div>
+                        <h3 class="benefit-title" data-i18n="rooms.bestRateGuarantee">Best Rate Guarantee</h3>
+                        <p class="benefit-text" data-i18n="rooms.bestRateDesc">Find a lower price elsewhere? We'll match it and give you an additional 10% off.</p>
+                    </div>
+                    
+                    <div class="benefit-card zoom-in">
+                        <div class="benefit-icon">🍽️</div>
+                        <h3 class="benefit-title" data-i18n="rooms.freeBreakfast">Complimentary Breakfast</h3>
+                        <p class="benefit-text" data-i18n="rooms.breakfastDesc">Enjoy a free breakfast for all guests when booking directly on our website.</p>
+                    </div>
+                    
+                    <div class="benefit-card zoom-in">
+                        <div class="benefit-icon">⏰</div>
+                        <h3 class="benefit-title" data-i18n="rooms.earlyCheckIn">Early Check-In & Late Check-Out</h3>
+                        <p class="benefit-text" data-i18n="rooms.checkInDesc">Subject to availability, enjoy early check-in and late check-out privileges.</p>
+                    </div>
+                    
+                    <div class="benefit-card zoom-in">
+                        <div class="benefit-icon">🔄</div>
+                        <h3 class="benefit-title" data-i18n="rooms.freeCancel">Free Cancellation</h3>
+                        <p class="benefit-text" data-i18n="rooms.cancelDesc">Flexible cancellation policy when booking directly with us.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Frequently Asked Questions - NEW -->
+        <section class="faq-section section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Frequently Asked Questions</h2>
+                    <p class="section-description slide-up">Everything you need to know about our rooms and booking process</p>
+                </div>
+                
+                <div class="faq-grid stagger-animation">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What time is check-in and check-out?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Check-in time is from 14:00 (2:00 PM), and check-out is until 12:00 (noon). Early check-in and late check-out can be arranged based on availability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is breakfast included with the room?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Most of our room packages include complimentary breakfast. You can check if breakfast is included in the room description. Breakfast is served from 6:30 AM to 10:30 AM daily.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I request a specific room view?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can request a specific room view during booking. We offer ocean view, garden view, pool view, and mountain view rooms. While we do our best to accommodate preferences, specific views are subject to availability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is the cancellation policy?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For most room types, free cancellation is available up to 24 hours before check-in. Some special rates and promotions may have different cancellation policies. The specific policy will be displayed before you complete your booking.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is there free WiFi in the rooms?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all rooms include complimentary high-speed WiFi internet access. WiFi is also available in all public areas of the resort.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you offer airport transfers?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer airport transfer services for an additional fee. You can arrange this when booking your room or by contacting our concierge at least 24 hours before your arrival.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="cta section scroll-reveal">
+            <div class="container">
+                <h2 class="heading-2 slide-up" data-i18n="rooms.readyToBook">Ready to Experience Luxury?</h2>
+                <p class="cta-text slide-up" data-i18n="rooms.bookingPrompt">Book your perfect room at Vinpearl Nha Trang and enjoy an unforgettable stay.</p>
+                <div class="slide-up">
+                    <a href="#" class="btn btn-white" data-i18n="rooms.bookNow">Book Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Room card template for dynamic rendering -->
+    <template id="room-card-template">
+        <div class="room-card">
+            <div class="room-card-image">
+                <img src="" alt="">
+                <div class="room-card-badges">
+                    <!-- Badges will be inserted dynamically -->
+                </div>
+            </div>
+            <div class="room-card-content">
+                <h3 class="room-card-title"></h3>
+                <div class="room-card-features">
+                    <!-- Features will be inserted dynamically -->
+                </div>
+                <div class="room-card-description">
+                    <p></p>
+                </div>
+                <div class="room-card-footer">
+                    <div class="room-price">
+                        <span class="price"></span> / night
+                    </div>
+                    <a href="" class="btn btn-primary" data-i18n="rooms.viewDetails">View Details</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Custom styles for the updated rooms page -->
+    <style>
+        /* NEW: Booking Bar */
+        .booking-bar {
+            background-color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            z-index: 10;
+            margin-top: -3rem;
+            border-radius: 0.5rem;
+        }
+        
+        .booking-search-form {
+            background-color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+        }
+        
+        .booking-form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .booking-form-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .booking-form-field label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-700);
+        }
+        
+        .date-picker-wrapper {
+            position: relative;
+        }
+        
+        .date-input {
+            width: 100%;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            border: 1px solid var(--color-gray-300);
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+        
+        .date-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-500);
+            pointer-events: none;
+        }
+        
+        .booking-form-button {
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .booking-form-button .btn {
+            width: 100%;
+            padding: 0.75rem;
+        }
+        
+        /* Layout changes */
+        .rooms-content-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .filters-sidebar {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-text {
+            background: none;
+            border: none;
+            color: var(--color-primary-600);
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .btn-text:hover {
+            color: var(--color-primary-800);
+            text-decoration: underline;
+        }
+        
+        .filter-section {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+        
+        .filter-section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-gray-800);
+        }
+        
+        /* Checkbox styles */
+        .filter-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .filter-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: white;
+            border: 1px solid var(--color-gray-300);
+            border-radius: 4px;
+        }
+        
+        .filter-checkbox:hover input ~ .checkmark {
+            border-color: var(--color-primary-400);
+        }
+        
+        .filter-checkbox input:checked ~ .checkmark {
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .filter-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .filter-checkbox .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        /* Range slider styles */
+        .range-slider-container {
+            padding: 0.5rem 0;
+        }
+        
+        .price-range {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 6px;
+            background: var(--color-gray-200);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .price-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--color-primary-600);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .price-range::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--color-primary-600);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+        }
+        
+        #price-value {
+            font-weight: bold;
+            color: var(--color-primary-600);
+        }
+        
+        .btn-full {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        
+        /* Room card updates */
+        .room-card {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transform: translateY(0);
+            transition: all 0.3s ease-out;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-prominent);
+        }
+        
+        .room-card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .room-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .room-card:hover .room-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .room-card-badges {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-primary {
+            background-color: var(--color-primary-100);
+            color: var(--color-primary-700);
+        }
+        
+        .badge-secondary {
+            background-color: var(--color-gray-100);
+            color: var(--color-gray-700);
+        }
+        
+        .badge-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .room-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .room-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-gray-900);
+        }
+        
+        .room-card-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .room-feature {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--color-gray-700);
+        }
+        
+        .room-feature-icon {
+            margin-right: 0.5rem;
+        }
+        
+        .room-card-description {
+            margin-bottom: 1.5rem;
+            color: var(--color-gray-600);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .room-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .room-price {
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+        }
+        
+        .room-price .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary-600);
+        }
+        
+        /* FAQ styles */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            background-color: white;
+        }
+        
+        .faq-question h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--color-primary-600);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer p {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--color-gray-700);
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        /* No results styles */
+        .no-results-message {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .loading-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 3rem 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border-left-color: var(--color-primary-600);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .pagination-prev,
+        .pagination-next {
+            background: none;
+            border: 1px solid var(--color-gray-300);
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--color-gray-700);
+        }
+        
+        .pagination-prev:disabled,
+        .pagination-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pagination-numbers {
+            display: flex;
+            align-items: center;
+            margin: 0 0.5rem;
+        }
+        
+        .pagination-number {
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            margin: 0 0.25rem;
+            border-radius: 0.375rem;
+            background-color: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .pagination-number.active {
+            background-color: var(--color-primary-600);
+            color: var(--color-white);
+            border-color: var(--color-primary-600);
+        }
+        
+        .pagination-ellipsis {
+            padding: 0.5rem 0.25rem;
+            margin: 0 0.25rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .booking-form-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 1.5rem;
+            }
+            
+            .rooms-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .rooms-content-layout {
+                grid-template-columns: 300px 1fr;
+            }
+            
+            .rooms-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .filters-sidebar {
+                position: sticky;
+                top: 2rem;
+                height: fit-content;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .faq-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .rooms-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/rooms.js"></script>
+</body>
+</html>

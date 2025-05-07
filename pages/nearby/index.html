@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Attractions - Vinpearl Nha Trang Resort</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../../index.html" class="logo">Vinpearl</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="../nearby/index.html" class="active" data-i18n="nav.nearby">Nearby</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <div class="language-selector">
+                        <button id="language-toggle">EN</button>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="en" class="active">English</a>
+                            <a href="#" data-lang="vi">Vietnamese</a>
+                        </div>
+                    </div>
+                    <a href="../auth/index.html" class="btn btn-white" data-i18n="nav.signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1476158085676-e67f57ed9ed7?q=80&w=1920" alt="Nha Trang Attractions">
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="heading-1 fade-in">Discover Nha Trang</h1>
+                    <p class="hero-subtitle fade-in">Explore the wonders and attractions surrounding Vinpearl Nha Trang Resort.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filters section-sm bg-gray-50">
+            <div class="container">
+                <div class="filter-controls">
+                    <h2 class="text-xl font-medium mb-4">Filter Attractions</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="cultural">Cultural</button>
+                        <button class="filter-btn" data-filter="nature">Nature</button>
+                        <button class="filter-btn" data-filter="beaches">Beaches</button>
+                        <button class="filter-btn" data-filter="dining">Dining</button>
+                        <button class="filter-btn" data-filter="shopping">Shopping</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nearby Attractions Section -->
+        <section class="nearby section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Popular Attractions</h2>
+                    <p class="section-description slide-up">Discover the best destinations and experiences within easy reach of our resort.</p>
+                </div>
+                
+                <div class="cards-grid stagger-animation">
+                    <!-- Attraction 1 -->
+                    <div class="card zoom-in" data-category="cultural">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=600" alt="Long Son Pagoda">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">3.5 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Long Son Pagoda</h3>
+                                <span class="category-tag cultural">Cultural</span>
+                            </div>
+                            <p class="card-text">Famous Buddhist temple featuring a large white Buddha statue overlooking the city. Built in the 19th century, it offers a glimpse into Vietnam's spiritual heritage.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/JfqpvmTLNdAcyork7" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 2 -->
+                    <div class="card zoom-in" data-category="nature">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1537263728250-2104b918e8b3?q=80&w=600" alt="Ba Ho Waterfalls">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">25 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Ba Ho Waterfalls</h3>
+                                <span class="category-tag nature">Nature</span>
+                            </div>
+                            <p class="card-text">A series of three picturesque waterfalls nestled in lush jungle surroundings. Perfect for swimming, climbing, and enjoying the natural beauty of Vietnam.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/NZrnZja7NZoUyaL46" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 3 -->
+                    <div class="card zoom-in" data-category="beaches">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1559128010-7c1ad6cef566?q=80&w=600" alt="Doc Let Beach">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">45 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Doc Let Beach</h3>
+                                <span class="category-tag beaches">Beach</span>
+                            </div>
+                            <p class="card-text">Pristine white sand beach with crystal clear waters, less crowded than the main city beaches. Known for its peaceful atmosphere and salt fields nearby.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/ynG5g9C9XoqUdFqr5" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Transport</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 4 -->
+                    <div class="card zoom-in" data-category="cultural">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1629285483773-6b5cde2171d7?q=80&w=600" alt="Po Nagar Cham Towers">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">5 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Po Nagar Cham Towers</h3>
+                                <span class="category-tag cultural">Cultural</span>
+                            </div>
+                            <p class="card-text">Ancient Hindu temple complex built between the 7th and 12th centuries. These well-preserved towers showcase impressive Cham architecture and religious artistry.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/mNwN1Xk5GJeLRx7aA" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 5 -->
+                    <div class="card zoom-in" data-category="nature">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1577717908709-47603998060c?q=80&w=600" alt="Hon Chong Promontory">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">7 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Hon Chong Promontory</h3>
+                                <span class="category-tag nature">Nature</span>
+                            </div>
+                            <p class="card-text">Dramatic rock formations jutting out into the sea, offering stunning views of the coastline. According to local legend, a giant's handprint is visible on one of the rocks.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/UNT7RPPUvbWwB2VH9" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 6 -->
+                    <div class="card zoom-in" data-category="dining">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1539685524231-6eafa74f3944?q=80&w=600" alt="Nha Trang Night Market">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">4 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Nha Trang Night Market</h3>
+                                <span class="category-tag dining">Dining</span>
+                            </div>
+                            <p class="card-text">Vibrant market offering a variety of local cuisine, fresh seafood, and souvenirs. Experience the authentic flavors and bustling atmosphere of Nha Trang after dark.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/TLB5iHpfoXV6s8J38" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Food Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 7 -->
+                    <div class="card zoom-in" data-category="shopping">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1619449860881-99229aced63b?q=80&w=600" alt="Cho Dam Market">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">6 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Cho Dam Market</h3>
+                                <span class="category-tag shopping">Shopping</span>
+                            </div>
+                            <p class="card-text">Nha Trang's largest market, offering everything from fresh produce and seafood to clothing and souvenirs. A great place to practice your bargaining skills!</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/YeBcEmTrBmFP2pgo7" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book City Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 8 -->
+                    <div class="card zoom-in" data-category="beaches">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1517399155580-ca0341132991?q=80&w=600" alt="Hon Mun Island">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">10 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Hon Mun Island</h3>
+                                <span class="category-tag beaches">Beach</span>
+                            </div>
+                            <p class="card-text">Vietnam's first marine protected area, known for its crystal clear waters, diverse coral reefs, and colorful marine life. Perfect for snorkeling and diving enthusiasts.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/ckTuQHnJLrjhCHox7" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attraction 9 -->
+                    <div class="card zoom-in" data-category="dining">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1536856136364-a332ef55794f?q=80&w=600" alt="Sailing Club Nha Trang">
+                            <div class="image-overlay"></div>
+                            <div class="distance-badge">3 km</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="card-title">Sailing Club Nha Trang</h3>
+                                <span class="category-tag dining">Dining</span>
+                            </div>
+                            <p class="card-text">Iconic beachfront restaurant and bar offering international cuisine, cocktails, and nightlife entertainment. One of the most popular venues in Nha Trang since 1994.</p>
+                            <div class="card-footer">
+                                <a href="https://goo.gl/maps/F6uq4odqgzduXBLh7" target="_blank" class="card-link">View on Map</a>
+                                <a href="#" class="btn btn-sm btn-primary">Book Table</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Map Section -->
+        <section class="map-section section bg-gray-50 scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Explore the Area</h2>
+                    <p class="section-description slide-up">Discover all the attractions surrounding Vinpearl Nha Trang Resort.</p>
+                </div>
+                
+                <div class="map-container zoom-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53384.69271262062!2d109.18135660795418!3d12.249962766000207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31706770f4016dad%3A0xb9b20c54b16c0253!2sVinpearl%20Resort%20%26%20Spa%20Nha%20Trang%20Bay!5e0!3m2!1sen!2sus!4v1683381470215!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Transportation Section -->
+        <section class="transportation section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="heading-2 slide-up">Getting Around</h2>
+                    <p class="section-description slide-up">Convenient transportation options to help you explore Nha Trang.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-animation">
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1606839394795-762b7b0ae300?q=80&w=600" alt="Resort Shuttle">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Resort Shuttle</h3>
+                            <p class="card-text">Complimentary shuttle service from the resort to Nha Trang city center at scheduled times throughout the day.</p>
+                            <a href="#" class="card-link">View Schedule</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1601887573188-73495d91fc48?q=80&w=600" alt="Private Car">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Private Car Service</h3>
+                            <p class="card-text">Book a private car with a driver for personalized excursions to any destination around Nha Trang.</p>
+                            <a href="#" class="card-link">Request Quote</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card zoom-in">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?q=80&w=600" alt="Taxi Services">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Taxi Services</h3>
+                            <p class="card-text">Reliable taxi services available 24/7. Our concierge can arrange a taxi for you or recommend trusted companies.</p>
+                            <a href="#" class="card-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section scroll-reveal">
+            <div class="container">
+                <h2 class="heading-2 slide-up">Plan Your Adventure</h2>
+                <p class="cta-text slide-up">Let our concierge help you plan the perfect itinerary during your stay at Vinpearl Nha Trang.</p>
+                <div class="slide-up">
+                    <a href="#" class="btn btn-white">Contact Concierge</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Vinpearl Nha Trang</h3>
+                    <p class="footer-text">Experience luxury and comfort in our beachfront resort with world-class amenities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html" data-i18n="nav.home">Home</a></li>
+                        <li><a href="../about/index.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="../rooms/index.html" data-i18n="nav.rooms">Rooms</a></li>
+                        <li><a href="../tours/index.html" data-i18n="nav.tours">Tours</a></li>
+                        <li><a href="../packages/index.html" data-i18n="nav.packages">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact</h3>
+                    <address class="footer-contact">
+                        <p>Hon Tre Island, Nha Trang</p>
+                        <p>Khanh Hoa, Vietnam</p>
+                        <p>Phone: +84 258 359 8888</p>
+                        <p>Email: info@vinpearl.com</p>
+                    </address>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text" data-i18n="footer.newsletter">Subscribe to our newsletter for the latest updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" data-i18n="footer.email" data-i18n-attr="placeholder">
+                        <button type="submit" class="btn btn-primary newsletter-button" data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Vinpearl Nha Trang. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        // Filter functionality for attractions
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const attractions = document.querySelectorAll('[data-category]');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show all items if "all" is selected
+                    if (filter === 'all') {
+                        attractions.forEach(item => {
+                            item.style.display = 'block';
+                        });
+                        return;
+                    }
+                    
+                    // Filter items
+                    attractions.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
